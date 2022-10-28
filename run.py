@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import math
+from datetime import datetime
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -62,18 +63,28 @@ def contact_red_clients ():
     """
 def average_loss ():
     """ 
+    Calculate average weight lost in total over entire 9 week term for clients
+    Calculate average weight lost per week for clients
     """
 
  def max_loss ():
     """  
+    Calculate maximum total weight lost over 9 weeks-list client and weight loss in kg
+    Calculate maximum weight lost in week 9-list client and weight lost in kg
     """
 
  def min_loss ():
   """ 
+  Calculate minimum total weight lost over 9 weeks-list client and weight loss in kg
+  Calculate minimum weight lost in week 9-list client and weight lost in kg
   """
 
  def weight_loss_range ():
   """  
+  F string printed to python terminal
+  Lowest total weight loss in kg-Highest total weight loss in kg over 9 weeks listed
+  Lowest total weight loss in kg-highest total weight loss in kg for week 9 only listed
+
   """         
 
 
