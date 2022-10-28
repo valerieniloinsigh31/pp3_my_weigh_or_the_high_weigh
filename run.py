@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import math
 from datetime import datetime
+ 
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -19,6 +20,13 @@ def login():
     Gets username and password before allowing user to log in and access confidential 
     information.
     """
+
+username = input("Username: ")
+password = input("Please enter your password: ")
+"""
+error handling...insert Try: Except: for username and password being correct
+"""
+print("Hello " + username + ", welcome to your Personal Training client tracker app, My Weigh or the High Weigh."
 
 def print_last_weighin():
     """
