@@ -22,7 +22,21 @@ def login():
     """
 
 username = input("Username: ")
+
+while True:
+    try:
+        x = input('Enter a number.')
+        print(f'Number is {x}')
+    except ValueError:
+        print('Wrong username')
+
 password = input("Please enter your password: ")
+while True:
+    try:
+        x = input('Enter a number.')
+        print(f'Number is {x}')
+    except PermissionError:
+        print('Wrong password')
 """
 error handling...insert Try: Except: for username and password being correct
 """
@@ -43,7 +57,23 @@ def enter_currentweighins():
     must be to two decimal places, must be an entry for each of the six clients, can
     be 0.00.
     Once this is entered it should update the google sheets page accordingly
+    Must be a float, must be numeric, must be six values
     """
+
+    while True:
+    try:
+        x = float(input('Enter the last weigh-in results for your clients.'))
+        print(f'The respective week week-end weigh-ins for Paul, John, James, Declan, 
+         Mike and Ian are {x}')
+    except ValueError:
+        print('Must be in kg, to two decimal places')
+
+    while True:
+    try:
+        x = int(input('Enter the last weigh-in results for your clients.'))
+        print(f'Number is {x}')
+    except ValueError:
+        print('Must enter weigh-in info for all six clients')
 
 def worth_the_weight (): 
     """ 
@@ -101,14 +131,12 @@ def main():
     Run all program functions-important to have at end of python code...can be commented out in order to test 
     individual functions
     """
-    data = get_sales_data()
-    sales_data = [int(num) for num in data]
-    update_worksheet(sales_data, "sales")
-    new_surplus_data = calculate_surplus_data(sales_data)
-    update_worksheet(new_surplus_data, "surplus")
-    sales_columns = get_last_5_entries_sales()
-    stock_data = calculate_stock_data(sales_columns)
-    update_worksheet(stock_data, "stock")
+    data = get_data()
+    weighin_data = [float(num) for num in data]
+    update_worksheet(week_ends, "week-end data")
+    new_weightloss_data = calculate_weightloss_data(insights)
+    update_worksheet(new_weightloss_data, "insights")
+    update_worksheet(variancw, "variance")
 
 
 
