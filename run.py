@@ -30,33 +30,42 @@ def get_weighin_data():
     """
     Get the latest weigh-in values input for each of the six clients from the user. Must be kg (in numerical format and a float). Must have six values
     """
+    while True:
+        print ("Please enter the latest weigh-in data for your six clients (in kg)")
+        print ("Must be to two decimal places, separated by commas, for each of the respective clients: Paul, John, James, Declan, Mike,Ian. ")
+        print ("Example: 80.45,75.45,66.32,78.22,76,22,77.13\n")
 
-    print ("Please enter the latest weigh-in data for your six clients (in kg)")
-    print ("Must be to two decimal places, separated by commas, for each of the respective clients: Paul, John, James, Declan, Mike,Ian. ")
-    print ("Example: 80.45,75.45,66.32,78.22,76,22,77.13\n")
+        latest_str = input("Enter latest weigh-in data here:\n")
+        print(f"The latest weights provided for Paul, John, James, Declan, Mike and Ian were {latest_str}")
 
-    latest_str = input("Enter latest weigh-in data here:\n")
-    print(f"The latest weights provided for Paul, John, James, Declan, Mike and Ian were {latest_str}")
+        weighin_data = latest_str.split(",")
+        
+        if validate_data(weighin_data):
+            print("Weigh-in data provided!")
+            break 
 
-    weighin_data = latest_str.split(",")
-    validate_data(weighin_data)
+    return weighin_data 
 
 def validate_data(values):
         print(values)
         """ 
-        Inside the try: except: error handling code, converts all strings into floats.
+        Inside the 'try: except:' error handling code, converts all strings into floats.
         Raises error if the string cannot be converted into a float or if there are not exactly 
         six values provided by the user.
         """
         try: 
+            [float(value) for value in values]
             if len(values) != 6:
                 raise ValueError (
                     f"Need to provide a value for each of the six clients, {len(values)} provided"
                 )
         except ValueError as e:
             print(f"Invalid data: {e}, please submit again. ")
+            return False
 
-get_weighin_data()
+        return True 
+
+data = get_weighin_data()
 
 """
 FUNCTION 3: Validating weigh-in data input by user
