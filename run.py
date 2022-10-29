@@ -38,6 +38,27 @@ def get_weighin_data():
     latest_str = input("Enter latest weigh-in data here:\n")
     print(f"The latest weights provided for Paul, John, James, Declan, Mike and Ian were {latest_str}")
 
+    weighin_data = latest_str.split(",")
+    validate_data(weighin_data)
+
+def validate_data(values):
+        print(values)
+        """ 
+        Inside the try: except: error handling code, converts all strings into floats.
+        Raises error if the string cannot be converted into a float or if there are not exactly 
+        six values provided by the user.
+        """
+        try: 
+            if len(values) != 6:
+                raise ValueError (
+                    f"Need to provide a value for each of the six clients, {len(values)} provided"
+                )
+        except ValueError as e:
+            print(f"Invalid data: {e}, please submit again. ")
+
 get_weighin_data()
 
+"""
+FUNCTION 3: Validating weigh-in data input by user
+"""
 
