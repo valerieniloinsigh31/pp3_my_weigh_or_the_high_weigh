@@ -19,6 +19,10 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('my_weigh_or_the_high_weigh')
 
+""" 
+FUNCTION 1: Using login and password from google sheets
+"""
+
 def login():
     """
     User must enter username and password before allowing user to log in and access confidential 
@@ -29,8 +33,8 @@ def login():
 
     login = SHEET.worksheet('login_info')
 
-    username_data = login.col_values(1)
-    password_data = login.col_values(2)
+    username_data = login_info.col_values(1)
+    password_data = login_info.col_values(2)
 
     while acceptable_username is False:
         username = input('Username:\n')
@@ -55,27 +59,24 @@ def login():
 
     return username
 
-username = input("Username: ")
-
-while True:
-    try:
-        x = input('Enter a number.')
-        print(f'Number is {x}')
-    except ValueError:
-        print('Wrong username')
-
-password = input("Password: ")
-while True:
-    try:
-        x = input('Enter a number.')
-        print(f'Number is {x}')
-    except PermissionError:
-        print('Wrong password')
 """
 Error handling...Insert Try: Except: for username and password being correct
 """
 print("Hello " + username + ", welcome to your Personal Training client tracker app,
  'My Weigh or the High Weigh.' "
+
+
+ """
+ FUNCTION 2: Access last weigh in
+ """
+
+week_starts = SHEET.worksheet('week_starts')
+
+startdata = week_starts.get_all_values()
+
+print(startdata)
+
+
 
 def print_last_weighin():
     """
@@ -178,6 +179,7 @@ def main():
     Run all program functions-important to have at end of python code...can be commented out in order to test 
     individual functions
     """
+
     data = get_data()
     weighin_data = [float(num) for num in data]
     update_worksheet(week_ends, "week-end data")
