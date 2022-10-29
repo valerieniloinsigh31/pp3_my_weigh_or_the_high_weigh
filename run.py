@@ -33,7 +33,7 @@ def get_weighin_data():
     while True:
         print ("Please enter the latest weigh-in data for your six clients (in kg)")
         print ("Must be to two decimal places, separated by commas, for each of the respective clients: Paul, John, James, Declan, Mike,Ian. ")
-        print ("Example: 80.45,75.45,66.32,78.22,76,22,77.13\n")
+        print ("Last weigh-in: 82.70,87.45,97.32,103.9,83.45,76.55\n")
 
         latest_str = input("Enter latest weigh-in data here:\n")
         print(f"The latest weights provided for Paul, John, James, Declan, Mike and Ian were {latest_str}")
@@ -64,10 +64,22 @@ def validate_data(values):
             return False
 
         return True 
+"""
+FUNCTION 3: Moving weigh-in data to the google sheets
+
+"""
+def update_weighin_worksheet(data):
+    """ 
+    Update week-end weigh-in worksheet, add new row with the values input by the user.
+    """
+    print ("Updating end-of-week weigh-in info for week 9...\n")
+    weighin_worksheet = SHEET.worksheet("week_ends")
+    weighin_worksheet.append_row(data)
+    print ("Week 9 end-of-week weigh-in info updated successfully.\n")
 
 data = get_weighin_data()
+weighin_data = [float(num) for num in data]
+update_weighin_worksheet(weighin_data)
 
-"""
-FUNCTION 3: Validating weigh-in data input by user
-"""
+
 
