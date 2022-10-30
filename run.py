@@ -77,8 +77,6 @@ def update_weighin_worksheet(data):
     weighin_worksheet.append_row(data)
     print ("Week 9 end-of-week weigh-in info updated successfully.\n")
 
-
-
 """  
 FUNCTION 4: Calculating change in weight
 """
@@ -93,8 +91,13 @@ def calculate_weight_change(week_ends_row):
 
     print("Calculating week 9 change in weight for Paul, John, James, Declan, Mike and Ian...")
     week_starts = SHEET.worksheet("week_starts").get_all_values()
-    week_starts_row = week_starts[-1]
-    print(week_starts_row)
+    week_starts_row = (week_starts[-1])
+    
+    weight_change_data = []
+    for week_starts, week_ends in zip(week_starts_row, week_ends_row):
+        weight_change = week_ends - float(week_starts)
+        weight_change_data.append(weight_change)
+    print(weight_change_data)
 
 """  
 MAIN FUNCTION-BOTTOM OF FILE-CONTAINS ALL FUNCTION CALLS
