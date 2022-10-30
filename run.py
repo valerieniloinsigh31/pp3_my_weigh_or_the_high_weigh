@@ -102,7 +102,7 @@ def calculate_weight_change(week_ends_row):
     return weight_change_data 
 
 """  
-FUNCTION 5:INSERTING WEIGHT_CHANGE_DATA INTO GOOGLE SHEETS
+FUNCTION 5:Inserting weight change data into google sheets
 """
 def update_weightchange_worksheet(weight_change_data):
     """ 
@@ -141,7 +141,7 @@ def calculate_variance(weight_change_row):
     return variance_data 
 
 """ 
-FUNCTION 7 : INSERTING VARIANCE_DATA INTO GOOGLE SHEETS
+FUNCTION 7 : Inserting variance data into google sheets
 """
 def update_variance_worksheet(variance_data):
     """ 
@@ -152,28 +152,59 @@ def update_variance_worksheet(variance_data):
     variance_worksheet.append_row(variance_data)
     print ("Week 9 variance info updated successfully.\n")
 
+"""  
+FUNCTION 8: Variance lists
 
-""" 
-FUNCTION 8: Moving variance info into google sheets
+"""  
+def variance_split():
+    """ 
+    Divide clients into two lists: Those that met expectation (negative variance) and those
+    that did not meet expectation (potentially use an if else formula).
+    The list of people that did meet expectation should be in green.
+    The list of people that did not meet expectation should be in red. 
+    """
+
+"""  
+FUNCTION 9: Red list feedback
+"""
+def redlist_feedback():
+"""
+For the red list, clients that did not meet expectation give the
+user the option to load their feedback comments to the python terminal
 """
 
-"""  
-FUNCTION 9: Divide clients into two lists: Those that met expectation and those
-that didn't, with if else. Those that did=green, those that did not=red
-"""  
-"""  
-FUNCTION 10:
-For the clients tht did not meet expectation-load their feedback comments to
-the python terminal for the personal trainer to see. 
+"""FUNCTION 10: Contact red list
 """
-
-"""FUNCTION 11:
+def contact_redlist():
+"""
 Gives personal trainer (user) the option to retrieve contact details for clients
-who did not meet expectation so he can contact them (e.g. if feedback not adeuqate)
+who did not meet expectation so he can contact them (e.g. if feedback not adequate)
+"""
+
+"""  
+FUNCTION 11: Range function.
+"""
+def weight_change_total_range():
+"""
+Calculates client with highest total weight loss (max)
+Calculates client with lowest total weight loss (min)
+Prints an f string to the python terminal f"The total weight loss over the
+course of the programme so far has ranged from {}kg to {}kg."
+"""
+
+"""FUNCTION 12:Average weight loss function.
+"""
+def weight_change_total_average():
+"""
+Calculates the average total weight loss per client over the course of the programme and prints
+f string (f"The average total weight loss for the programme to date has been {}kg)
+"""
 
 
+"""
 MAIN FUNCTION-BOTTOM OF FILE-CONTAINS ALL FUNCTION CALLS
 """
+
 def main():
     """ 
     Run all of the functions contained in the program-contains calls for 
