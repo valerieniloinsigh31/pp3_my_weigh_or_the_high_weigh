@@ -221,7 +221,13 @@ def variance_split():
 
     print("Dividing out client results into those that met their weight loss targets and those who did not...")
     green_list = SHEET.worksheet("variance_green").get_all_values()
-    variance_green_row = ((variance_green[-1]) if >0)
+    print("Firstly, here is a list of clients who met their expectation.")
+    print(green_list)
+
+    red_list = SHEET.worksheet("variance_red").get_all_values()
+    print("Now, here is a list of clients who did not meet their expectation.")
+    print(red_list)
+
 
 """  
 FUNCTION 9: Red list feedback
@@ -270,6 +276,7 @@ def main():
     all functions...login function to be inserted
     """
     print_bodybuilder()
+    user_login()
     data = get_weighin_data()
     weighin_data = [float(num) for num in data]
     update_weighin_worksheet(weighin_data)
