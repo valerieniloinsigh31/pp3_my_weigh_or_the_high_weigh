@@ -25,9 +25,9 @@ SHEET = GSPREAD_CLIENT.open('my_weigh_or_the_high_weigh')
 
 
 """ 
-COVER IMAGE FOR APP: From Ascii 
+COVER IMAGE FOR APP: From Ascii Art Archive
 """
-def print_bodybuilder ():
+def print_bodybuilder():
     """
     Prints the graphic of a bodybuilder, as
     extracted from https://www.asciiart.eu/sports-and-outdoors/other. Art by Joan Stark
@@ -71,7 +71,11 @@ def print_bodybuilder ():
 """ 
 FUNCTION 1: Using login and password from google sheets
 """
-
+def user_login():
+    """
+    Get username and password from the user, validate from data saved on google sheets
+    """
+    
 
 """
 FUNCTION 2: Collect latest weigh-in data from user
@@ -265,6 +269,7 @@ def main():
     Run all of the functions contained in the program-contains calls for 
     all functions...login function to be inserted
     """
+    print_bodybuilder()
     data = get_weighin_data()
     weighin_data = [float(num) for num in data]
     update_weighin_worksheet(weighin_data)
