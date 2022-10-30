@@ -89,8 +89,12 @@ Font Awesome-icons, still motiviational and useful despite backend functionality
 Ideas-'Love Sandwiches walkthrough project'
 Slack-Read queries and viewed different student repositories on Slack when researching for my project:
 Various student projects that I looked at included:
+ramon
+paul dwyer-choose your story
+https://github.com/JoGorska/hotel-booking/blob/main/run.py- as specified in slack MVP doc
 
 Content-git commit messages website per assessor feedback provided on PP2, made an effort to name my git commits more imperative
+Video on installing colorama: https://www.google.com/search?q=import+colorama+python&oq=Import+colorama+python&aqs=chrome.0.0i512j0i22i30j0i390l3.6454j0j7&sourceid=chrome&ie=UTF-8#kpvalbx=__K1eY9aBHcKYhbIP2vaq2AY_35
 
 <b>Minimum Viable Product Logic</b>
 Building on the success of PP2, I decided to not overly complicate my choice of project and to build on the knowledge acquired in tutorials and the walk-through project to layer on further code (using the walkthrough project code input as boilerplate code and editing this) as opposed to trying to implement entirely new concepts and code. 

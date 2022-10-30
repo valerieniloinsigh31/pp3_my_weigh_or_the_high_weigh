@@ -5,6 +5,10 @@ from datetime import datetime
 import os
 from pprint import pprint 
 import sys 
+import colorama
+from colorama import Fore 
+colorama.init(autoreset=True)
+
 
  
 
@@ -18,6 +22,51 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('my_weigh_or_the_high_weigh')
+
+
+""" 
+COVER IMAGE FOR APP: From Ascii 
+"""
+def print_bodybuilder ():
+    """
+    Prints the graphic of a bodybuilder, as
+    extracted from https://www.asciiart.eu/sports-and-outdoors/other. Art by Joan Stark
+    """
+    print('''
+                 ,#####,
+                 #_   _#
+                 |a` `a|
+                 |  u  |
+                 \  =  /
+                 |\___/|
+        ___ ____/:     :\____ ___
+      .'   `.-===-\   /-===-.`   '.
+     /      .-"""""-.-"""""-.      \
+    /'             =:=             '\
+  .'  ' .:    o   -=:=-   o    :. '  `.
+  (.'   /'. '-.....-'-.....-' .'\   '.)
+  /' ._/   ".     --:--     ."   \_. '\
+ |  .'|      ".  ---:---  ."      |'.  |
+ |  : |       |  ---:---  |       | :  |
+  \ : |       |_____._____|       | : /
+  /   (       |----|------|       )   \
+ /... .|      |    |      |      |. ...\
+|::::/''     /     |       \     ''\::::|
+'""""       /'    .L_      `\       """"'
+           /'-.,__/` `\__..-'\
+          ;      /     \      ;
+          :     /       \     |
+          |    /         \.   |
+          |`../           |  ,/
+          ( _ )           |  _)
+          |   |           |   |
+          |___|           \___|
+          :===|            |==|
+           \  /            |__|
+           /\/\           /"""`8.__
+           |oo|           \__.//___)
+           |==|
+           \__/.    \n Welcome to 'My Weigh or the High Weigh'\n ''')   
 
 """ 
 FUNCTION 1: Using login and password from google sheets
@@ -165,6 +214,10 @@ def variance_split():
     The list of people that did meet expectation should be in green.
     The list of people that did not meet expectation should be in red. 
     """
+
+    print("Dividing out client results into those that met their weight loss targets and those who did not...")
+    green_list = SHEET.worksheet("variance_green").get_all_values()
+    variance_green_row = ((variance_green[-1]) if >0)
 
 """  
 FUNCTION 9: Red list feedback
