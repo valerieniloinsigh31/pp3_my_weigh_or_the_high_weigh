@@ -4,7 +4,8 @@ import math
 from datetime import datetime
 import os
 from pprint import pprint 
-import sys 
+import sys
+sys.path.append("/usr/local/lib/python3.8/dist-packages/")
 import colorama
 from colorama import Fore 
 colorama.init(autoreset=True)
@@ -221,11 +222,11 @@ def variance_split():
 
     print("Dividing out client results into those that met their weight loss targets and those who did not...")
     green_list = SHEET.worksheet("variance_green").get_all_values()
-    print("Firstly, here is a list of clients who met their expectation.")
+    print(Fore.GREEN + 'Firstly, here is a list of clients who met their expectation.')
     print(green_list)
 
     red_list = SHEET.worksheet("variance_red").get_all_values()
-    print("Now, here is a list of clients who did not meet their expectation.")
+    print(Fore.RED + 'Now, here is a list of clients who did not meet their expectation.')
     print(red_list)
 
 
@@ -233,37 +234,37 @@ def variance_split():
 FUNCTION 9: Red list feedback
 """
 def redlist_feedback():
-"""
-For the red list, clients that did not meet expectation give the
-user the option to load their feedback comments to the python terminal
-"""
+    """
+    For the red list, clients that did not meet expectation give the
+    user the option to load their feedback comments to the python terminal
+    """
 
 """FUNCTION 10: Contact red list
 """
 def contact_redlist():
-"""
-Gives personal trainer (user) the option to retrieve contact details for clients
-who did not meet expectation so he can contact them (e.g. if feedback not adequate)
-"""
+    """
+    Gives personal trainer (user) the option to retrieve contact details for clients
+    who did not meet expectation so he can contact them (e.g. if feedback not adequate)
+    """
 
 """  
 FUNCTION 11: Range function.
 """
 def weight_change_total_range():
-"""
-Calculates client with highest total weight loss (max)
-Calculates client with lowest total weight loss (min)
-Prints an f string to the python terminal f"The total weight loss over the
-course of the programme so far has ranged from {}kg to {}kg."
-"""
+    """
+    Calculates client with highest total weight loss (max)
+    Calculates client with lowest total weight loss (min)
+    Prints an f string to the python terminal f"The total weight loss over the
+    course of the programme so far has ranged from {}kg to {}kg."
+    """
 
 """FUNCTION 12:Average weight loss function.
 """
 def weight_change_total_average():
-"""
-Calculates the average total weight loss per client over the course of the programme and prints
-f string (f"The average total weight loss for the programme to date has been {}kg)
-"""
+    """
+    Calculates the average total weight loss per client over the course of the programme and prints
+    f string (f"The average total weight loss for the programme to date has been {}kg)
+    """
 
 
 """
@@ -284,6 +285,7 @@ def main():
     update_weightchange_worksheet(new_weight_change_data)
     new_variance_data = calculate_variance(new_weight_change_data)
     update_variance_worksheet(new_variance_data)
+    variance_split()
 
 
 
