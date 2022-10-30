@@ -9,7 +9,7 @@
 User Goals: Show the results of the weight loss programme on a weekly basis for six programme participants within a similar control group in order to advertise the programme 'My Weigh or the High Weigh'
 User Stories:
 -The intended user is the personal trainer who is tracking his/her clients who are all following the 'My Weigh or the High Weigh' weight loss programme.
--The app enables the user to easily access information and to glean quick insights from the data using the various functions.
+-The app enables the user to easily access information and to glean quick insights from the data using the various functions. It is an app design to assist a personal trainer to track their clients.
 -The app will inform the shape of the weight loss programme, alerting the personal trainer to changes that may be necessary and how effective the weight loss programme is for the clients on an individual weekly and overall basis. The various functions, such as details on weekly weight change', details on total overall weight change and whether a client met their expected weekly weight loss offer immediate feedback to the user. This influences the exercise and nutritional adjustments that may need to be made and highlights what clients need to be developed further/focussed on for the upcoming week. The programme is a malleable, rolling programme and the expectations are adjusted each week based on the feedback from the app.
 -There is a function that divides clients into those that met their weight loss expectations and those that didn't. Those that did not meet their weight loss goals are highlighted in red and the user is given an option to access their contact details. The user can then send an email to the client to get direct feedback as to why the setback may have occurred (e.g. social even, injury, diet, didn't meet exercise goals etc.). The setbacks will be documented accordingly and considered in the weight loss programme going forward.
 -The app also offers overall insights into the success of the programme that can inform advertising or assist with advertising for a future intake of clients, for example with the weight loss range function, the user can readily and easily access the average range of weight loss on an overall total programme to-date basis as well and this can be used for advertisement purposes on instagram and facebook in order to promote the program to the next intake of clients.
@@ -110,6 +110,8 @@ Imported libraries:
 Refactoring code to streamline project: Is there any code that was refactored to streamline project:
 Application Programming Interface (API)-Google Cloud Platform-walkthrough followed:
 API-Google Drive and API-Google Sheets
+Object Orientated Programming:
+Importing external libraries:
 
 
 

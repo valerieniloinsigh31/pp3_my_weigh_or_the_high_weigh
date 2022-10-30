@@ -22,6 +22,8 @@ SHEET = GSPREAD_CLIENT.open('my_weigh_or_the_high_weigh')
 """ 
 FUNCTION 1: Using login and password from google sheets
 """
+
+
 """
 FUNCTION 2: Collect latest weigh-in data from user
 """
@@ -102,7 +104,7 @@ def calculate_weight_change(week_ends_row):
     return weight_change_data 
 
 """  
-FUNCTION 5:Inserting weight change data into google sheets
+FUNCTION 5: Inserting weight change data into google sheets
 """
 def update_weightchange_worksheet(weight_change_data):
     """ 
@@ -115,7 +117,7 @@ def update_weightchange_worksheet(weight_change_data):
 
 """  
 FUNCTION 6: Calculating variance-Expected weight loss versus actual weight 
-loss loop-format of function based on function 4
+loss loop. The format of this function is based on function 4
 """
 def calculate_variance(weight_change_row):
     """  
@@ -141,7 +143,7 @@ def calculate_variance(weight_change_row):
     return variance_data 
 
 """ 
-FUNCTION 7 : Inserting variance data into google sheets
+FUNCTION 7: Inserting variance data into google sheets
 """
 def update_variance_worksheet(variance_data):
     """ 
@@ -159,7 +161,7 @@ FUNCTION 8: Variance lists
 def variance_split():
     """ 
     Divide clients into two lists: Those that met expectation (negative variance) and those
-    that did not meet expectation (potentially use an if else formula).
+    that did not meet expectation.
     The list of people that did meet expectation should be in green.
     The list of people that did not meet expectation should be in red. 
     """
@@ -202,7 +204,7 @@ f string (f"The average total weight loss for the programme to date has been {}k
 
 
 """
-MAIN FUNCTION-BOTTOM OF FILE-CONTAINS ALL FUNCTION CALLS
+MAIN FUNCTION-Calls all functions
 """
 
 def main():
