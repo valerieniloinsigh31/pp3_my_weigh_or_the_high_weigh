@@ -87,6 +87,7 @@ def calculate_weight_change(week_ends_row):
     the change in weight is defined as the week_starts weighin figure subtracted from the week_ends weighin figure:
     - Positive change in weight indicates weight gain
     - Negative change in weight indicates weight loss
+    Need to review how to get new_weight_change_data to two decimal points
     """
 
     print("Calculating week 9 change in weight for Paul, John, James, Declan, Mike and Ian...")
@@ -97,9 +98,45 @@ def calculate_weight_change(week_ends_row):
     for week_starts, week_ends in zip(week_starts_row, week_ends_row):
         weight_change = week_ends - float(week_starts)
         weight_change_data.append(weight_change)
-    print(weight_change_data)
+    
+    return weight_change_data 
 
 """  
+FUNCTION 5:INSERTING WEIGHT_CHANGE_DATA INTO GOOGLE SHEETS
+"""
+def update_weightchange_worksheet(weight_change_data):
+    """ 
+    Update weight change worksheet, add new row with the weight change values previously calculated.
+    """
+    print ("Updating weight change info for week 9...\n")
+    weightchange_worksheet = SHEET.worksheet("weight_change")
+    weightchange_worksheet.append_row(weight_change_data)
+    print ("Week 9 weight change info updated successfully.\n")
+
+"""  
+FUNCTION 6: Calculating variance-Expected weight loss versus actual weight 
+loss loop
+"""
+
+""" 
+FUNCTION 8: Moving variance info into google sheets
+"""
+
+"""  
+FUNCTION 9: Divide clients into two lists: Those that met expectation and those
+that didn't, with if else. Those that did=green, those that did not=red
+"""  
+"""  
+FUNCTION 10:
+For the clients tht did not meet expectation-load their feedback comments to
+the python terminal for the personal trainer to see. 
+"""
+
+"""FUNCTION 11:
+Gives personal trainer (user) the option to retrieve contact details for clients
+who did not meet expectation so he can contact them (e.g. if feedback not adeuqate)
+
+
 MAIN FUNCTION-BOTTOM OF FILE-CONTAINS ALL FUNCTION CALLS
 """
 def main():
@@ -110,7 +147,9 @@ def main():
     data = get_weighin_data()
     weighin_data = [float(num) for num in data]
     update_weighin_worksheet(weighin_data)
-    calculate_weight_change(weighin_data)
+    new_weight_change_data = calculate_weight_change(weighin_data)
+    update_weightchange_worksheet(new_weight_change_data)
+
 
 
 print("Welcome to 'My Weigh or the High Weigh', the app built to assist personal trainers to track their clients!")
