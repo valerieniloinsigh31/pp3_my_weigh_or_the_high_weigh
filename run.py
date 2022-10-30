@@ -106,7 +106,7 @@ FUNCTION 5:INSERTING WEIGHT_CHANGE_DATA INTO GOOGLE SHEETS
 """
 def update_weightchange_worksheet(weight_change_data):
     """ 
-    Update weight change worksheet, add new row with the weight change values previously calculated.
+    Update weight change worksheet, add new row including the weight change values previously calculated in function 4.
     """
     print ("Updating weight change info for week 9...\n")
     weightchange_worksheet = SHEET.worksheet("weight_change")
@@ -143,6 +143,15 @@ def calculate_variance(weight_change_row):
 """ 
 FUNCTION 7 : INSERTING VARIANCE_DATA INTO GOOGLE SHEETS
 """
+def update_variance_worksheet(variance_data):
+    """ 
+    Update variance worksheet, add new row including the variance values previously calculated in function 6.
+    """
+    print ("Updating variance info for week 9...\n")
+    variance_worksheet = SHEET.worksheet("variance")
+    variance_worksheet.append_row(variance_data)
+    print ("Week 9 variance info updated successfully.\n")
+
 
 """ 
 FUNCTION 8: Moving variance info into google sheets
