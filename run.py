@@ -32,7 +32,7 @@ def get_weighin_data():
     """
     while True:
         print ("Please enter the latest weigh-in data for your six clients (in kg)")
-        print ("Must be to two decimal places, separated by commas, for each of the respective clients: Paul, John, James, Declan, Mike,Ian. ")
+        print ("Must be to two decimal places, separated by commas, for each of your respective clients: Paul, John, James, Declan, Mike, Ian. ")
         print ("Last weigh-in: 82.70,87.45,97.32,103.9,83.45,76.55\n")
 
         latest_str = input("Enter latest weigh-in data here:\n")
@@ -77,9 +77,41 @@ def update_weighin_worksheet(data):
     weighin_worksheet.append_row(data)
     print ("Week 9 end-of-week weigh-in info updated successfully.\n")
 
-data = get_weighin_data()
-weighin_data = [float(num) for num in data]
-update_weighin_worksheet(weighin_data)
+
+
+"""  
+FUNCTION 4: Calculating change in weight
+"""
+def calculate_weight_change(week_ends_row):
+    """  
+    Compare week_ends weighin data with week_starts weighin data and calculate the change for each client.
+    The change in weight will be calculated and added to the insights tab as the week 9 row.   
+    the change in weight is defined as the week_starts weighin figure subtracted from the week_ends weighin figure:
+    - Positive change in weight indicates weight gain
+    - Negative change in weight indicates weight loss
+    """
+
+    print("Calculating week 9 change in weight for Paul, John, James, Declan, Mike and Ian...")
+    week_starts = SHEET.worksheet("week_starts").get_all_values()
+    week_starts_row = week_starts[-1]
+    print(week_starts_row)
+
+"""  
+MAIN FUNCTION-BOTTOM OF FILE-CONTAINS ALL FUNCTION CALLS
+"""
+def main():
+    """ 
+    Run all of the functions contained in the program-contains calls for 
+    all functions...login function to be inserted
+    """
+    data = get_weighin_data()
+    weighin_data = [float(num) for num in data]
+    update_weighin_worksheet(weighin_data)
+    calculate_weight_change(weighin_data)
+
+
+print("Welcome to 'My Weigh or the High Weigh', the app built to assist personal trainers to track their clients!")
+main()
 
 
 
