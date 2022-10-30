@@ -115,7 +115,33 @@ def update_weightchange_worksheet(weight_change_data):
 
 """  
 FUNCTION 6: Calculating variance-Expected weight loss versus actual weight 
-loss loop
+loss loop-format of function based on function 4
+"""
+def calculate_variance(weight_change_row):
+    """  
+    Compare weight_change_data with expected_change_data and calculate the variance for each client.
+    The variance from expectation will be calculated and added to the variance tab as the week 9 row.   
+    The variance is defined as the expected_change_data figure subtracted from the weight_change_data figure:
+    - Positive variance indicates that weight loss expectation has not been met
+    - Negative variance in weight indicates that weight loss expectation has been met
+    Positive values print list of associated names in red to signify failure or that further action is required
+    Negative values print list of associated names in green, signifying no further action needed
+    *Note-function must be run after weight_change function so that the weight_change_data is populated and available for the necessary calculation
+    """
+
+    print("Calculating week 9 variance from expected weight loss for Paul, John, James, Declan, Mike and Ian...")
+    expected_wc = SHEET.worksheet("expected_wc").get_all_values()
+    expected_wc_row = (expected_wc[-1])
+    
+    variance_data = []
+    for expected_wc, weight_change in zip(expected_wc_row, weight_change_row):
+        variance = weight_change - float(expected_wc)
+        variance_data.append(variance)
+    
+    return variance_data 
+
+""" 
+FUNCTION 7 : INSERTING VARIANCE_DATA INTO GOOGLE SHEETS
 """
 
 """ 
@@ -149,6 +175,8 @@ def main():
     update_weighin_worksheet(weighin_data)
     new_weight_change_data = calculate_weight_change(weighin_data)
     update_weightchange_worksheet(new_weight_change_data)
+    new_variance_data = calculate_variance(new_weight_change_data)
+    update_variance_worksheet(new_variance_data)
 
 
 
