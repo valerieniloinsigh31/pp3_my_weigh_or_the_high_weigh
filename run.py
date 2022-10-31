@@ -81,17 +81,20 @@ def user_login():
     username_valid= (login[1])
     password_valid= (login[2])
 
+    print(f"Username expected: {username_valid}")
+    print(f"Password expected: {password_valid}")
+
     username_input = input('Enter your username here:\n')
 
     if username_input == username_valid:
-    print("Hi personal_trainer, please enter your usual password.")
+        print("Hi personal_trainer, please enter your usual password.")
     else:
-    print('Invalid username, try again\n')
+        print('Invalid username, try again\n')
 
     password_input = input('Enter your password here:\n')
 
     if password_input == password_valid:
-        print: ("Welcome back personal_trainer")
+        print("Welcome back personal_trainer")
     else:
         print('Invalid password, try again\n')
 """
@@ -264,7 +267,6 @@ def list_feedback():
     red_list_row = (red_list[0])
     print(red_list_row)
     print("Have a look at some of the feedback provided by clients during the week.")
-    print("Please enter the number of the first client you would like to get a comment from-maybe someone who did not meet expectation?")
     
     """   
     Nested functions: One per client, Paul, John, James, Declan, Mike, Ian
@@ -410,11 +412,11 @@ def weight_change_total_range():
     Pulls in value from max and min tabs in google sheet
     Prints an f string to the python terminal f"The total weight loss over the
     course of the programme so far has ranged from {}kg to {}kg."
-    """
     variable 1=lowest kg extracted from google sheets
     print(f"")
+    """
 
-"""FUNCTION 12:Average weight loss function.
+"""FUNCTION 12:Average weight loss function.gi
 """
 def weight_change_total_average():
     """
@@ -433,8 +435,7 @@ def exit_app():
     entire app must be rest so next user can use app 
     Lines that need to have rows removed...week_ends, weight_change, variance)
     """
-    
-
+ 
 
 """
 MAIN FUNCTION-Calls all functions
@@ -457,6 +458,7 @@ def main():
     variance_split()
     list_feedback()
     contact_client()
+    exit_app()
     
 
 
