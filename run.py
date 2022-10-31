@@ -428,6 +428,7 @@ def main():
     update_variance_worksheet(new_variance_data)
     variance_split()
     list_feedback()
+    contact_client()
     
 
 
