@@ -80,14 +80,17 @@ gspread: Python API for Google Sheets imported to project-incorporated per CI tu
 Google Auth: Google authentication library for Python required to use the credentials generated for Google Drive API-imported per cI tutorial
 Lucidcharts (as mentioned on CI tutorial) used to create the flowcharts outlining the functionality of the project.
 Git: used for version control via the Gitpod terminal to commit to Git and Push to GitHub.
-GitHub: the respository for the projects code after being pushed from Git.
-Heroku: is used to deploy the application and provides an enviroment in which the code can execute-installed via GITHUB Student Developer Pack as provided by CI Institute
+GitHub: generates/contains the repository for the projects code after being pushed from Git.
+Heroku: used to deploy the application and provides an environment in which the code can execute. As per CI tutorial, installed using GITHUB Student Developer Pack authentication code provided by Student Care. Connected with GITHUB per CI tutorial. Initially for demonstrative purposes, manual deployment selected in order to track how this is done and then alerted to automatic deployment linked with Github.
 
 <b>Testing:</b> 
-PIP3 install was used for testing on the GITHUB terminal itself as there appeared to be an issue with the PEP8 validator
+'pip3 install pycodestyle' was used for testing on the GITHUB terminal itself as there appeared to be an issue with the PEP8 validator
 
 Installation performed per below comment extracted from Slack:
+Gitpod->Python Select Linter->pycodestyle
 
+Linter:
+Codestyle:
 
 <b>Testing User Stories from User Experience (UX) Section</b>
 
@@ -99,25 +102,166 @@ Installation performed per below comment extracted from Slack:
 -This project was the first backend project (previous projects had been front end, HTML/CSS and Javascript)
 -This project required activiation of the GITHUB Student Developer pack, as provided by the Code Institute, per the below:
 
-
+-Per Slack, requested Github Student Developer Pack activiation email and activated accordingly once received
 -Activated Heroku and connect it to GITHUB profile per below:
 
 I selected manual deployment for the Walkthrough ('Love Sandwiches project') but updated to automatic deployment for this project and, accordingly, it was automatically connected to Heroku for dpeloyment and the usual deployment process could be followed on GITHUB thereafter, per below:
 
+<h2><b>Clone the GitHub repository</b></h2>
+<b>Steps to create a local clone-per CI tutorial</b>
+<ol>
+<li>Go to the https://github.com/elainebroche-dev/ms3-event-scheduler repository on GitHub</li>
 
+<li>Click the "Code" button to the right of the screen, click HTTPs and copy the link there</li>
+
+<li>Open a GitBash terminal and navigate to the directory where you want to locate the clone</li>
+
+<li>On the command line, type "git clone" then paste in the copied url and press the Enter key to begin the clone process</li>
+
+<li>Changes made to the local clone can be pushed back to the repository using the following commands:
+
+git add filenames (or "." to add all changed files)
+git commit -m "text message describing changes"
+git push
+
+N.B. Any changes pushed to the master branch will take effect on the live project because automatic deployments are enabled in Heroku for this project.
+
+N.B. Any data changes made through the use of the application will take effect in the live project Google spreadsheet.
+</ol>
+
+<h2><b>How to create and configure the Google spreadsheet and APIs</b></h2>
+<b>Steps to setup and configure access to data</b>
+<ol>
+<b>Create the Google Spreadsheet</b>
+<ol>
+<li>Log in to your Google account</li>
+<li>Create a Google Spreadsheet called 'my_weigh_or_the_high_weigh' on the Google Drive with several tabs:''.</li>
+
+Set up APIs using the Google Cloud Platform
+
+Access the Google Cloud Platform
+
+Create a new project and give it a unique name, then select the project to go to the project dashboard
+</ol>
+
+<b>Setup Google Drive credentials</b>
+
+<li>Completed as per CI tutorial</li>
+
+<li>Click on the hamburger menu in the top left of the screen to access the navigation menu</li>
+
+<li>On the left hand menu select 'APIs and Services' and then 'Library'</li>
+
+<li>>Search for Google Drive API</li>
+
+<li>Select Google Drive API and click on 'enable' to get to the API and Services Overview page</li>
+
+<li>Click on the Create Credentials button near the top left of the screen</li>
+
+<li>Select 'Google Drive' API from the dropdown for 'Credential Type'</li>
+
+<li>Select the 'Application Data' radio button in the 'What data will you be accessing' area</li>
+
+<li>Select the 'No, I'm not using them' for the 'Are you planning to use this API with Compute Engine, Kubernetes Engine, App Engine, or Cloud Functions?' area</li>
+
+<li>Cick Next</li>
+
+<li>On the Create Service Account page, step 1 is to enter a service account name in the first text box. Any value can be entered here.</li>
+
+<li>Click on 'Create and Continue'</li>
+
+<li>On step 2, 'Grant this service account access to project', select Basic -> Editor from the 'Select a Role' dropdown.</li>
+
+<li>Click on Continue</li>
+
+<li>On step 3, 'Grant users access to this service account', select Done, no input is required</li>
+
+<li>On the next page, click on the service account name created (listed under the Service Accounts area) to go to the configuration page for the new service account.</li>
+
+<li>Click on the KEYS tab at the top middle of the screen.</li>
+
+<li>Click on the Add Key dropdown and select Create New Key.</li>
+
+<li>Select the JSON radio button then click Create. The json file with the new API credentials will download your machine.</li>
+
+<li>Rename the downloaded file to creds.json. This filename is already listed in the project .gitignore file and so no further action will be needed to prevent it being accidentally uploaded to github. This was done on the 'Love Sandwiches' walkthrough project. Could name anything but ensure name is also included in .gitignore file.</li>
+
+<li>Copy the new creds.json file into the local clone</li>
+
+<li>In the creds.json file, copy the value for "client email" (excluding inverted commas) and then  on the Google Drive, paste this exact address into the share with section. Share the spreadsheet created above with this email address, assigning a role of Editor similar to the image shown below:</li>
+
+Share Spreadsheet Image:
+
+
+<b>Enable Google Sheets API</b>
+
+<li>Go back to the dashboard for the project on Google Cloud Platform and access the navigation menu as before</li>
+<li>On the left hand menu select 'APIs and Services' and then 'Library'</li>
+<li>Search for Google Sheets API</li>
+<li>Select Google Sheets API and click on 'enable'</li>
+
+
+<b>Install gspread and google-auth libraries in the development environment using the command 'pip3 install gspread google-auth'</b>
+
+
+</ol>
+<b>How this site was deployed to Heroku</b>
+<b>Steps followed to deploy-as per CI tutorial</b>
+<ol>
+<li>The requirements.txt file in the project was updated to include details on the project dependencies.</li>
+
+<b>Steps to do this are :</b>
+<ol>
+<li>Enter the following command at the terminal prompt : 'pip3 freeze > requirements.txt'</li>
+<li>Commit resulting changes to requirements.txt and push to github.</li>
+
+<li>Log in to Heroku, create an account if necessary.</li>
+
+<li>From the Heroku dashboard, click the Create new app button. For a new account an icon will be visible on screen to allow you to Create an app, otherwise a link to this function is located under the New dropdown menu at the top right of the screen.</li>
+
+<li>On the Create New App page, enter a unique name for the application and select region. Then click Create app.</li>
+
+<li>You will then be brought to the Application Configuration page for your new app. Changes are needed here on the Settings and Deploy tabs.</li>
+
+<li>Click on the Settings tab and then scroll down to the 'Config Vars' section to set up the private Environment Variables for the application - i.e. the credentials used by the application to access the spreadsheet data.</li>
+
+<li>Click on 'Reveal Config Vars'. In the field for key enter 'CREDS' and paste the entire contents of the creds.json file into the VALUE field and click ADD. A description on the creation of the creds.json file is documented in 'How to create and configure the Google spreadsheet and APIs' section above.</li>
+
+<li>Next, scroll down the Settings page to Buildpacks. Click Add buildpack, select Python from the pop up window and click on Save changes. Click Add buildpack again, select Node.js from the pop up window and click on Save changes. It is important that the buildpacks are listed Python first, then Node.js beneath.</li>
+
+<li>Click on the Deploy tab on the Application Configuration page.</li>
+
+<li>Select GitHub as the Deployment Method and if prompted, confirm that you want to connect to GitHub. Enter the name of the github repository (the one used for this project is INSERT REPOSITARY) and click on Connect to link up the Heroku app to the GitHub repository code.</li>
+
+<li>Scroll down the page and choose to either Automatically Deploy each time changes are pushed to GitHub, or Manually deploy - for this project Automatic Deploy was selected. (but did intially select manual deployment when setting up Heroku for 'Love Sandwiches' walkthrough)</li>
+
+<li>The application can be run from the Application Configuration page by clicking on the Open App button.</li>
+</ol>
+
+<b>The live link for this project is (INSERT WHEN DEPLOYED)</b>
 
 <b>Credits:</b>
-Code Institute tutorials-particualrly the functions and Slack
-Font-what font did I choose and why
-Font Awesome-icons, still motiviational and useful despite backend functionality
+Code Institute tutorials-particularly the 'Love Sandwiches' Walkthrough Project and Slack
 Ideas-'Love Sandwiches walkthrough project'
 Slack-Read queries and viewed different student repositories on Slack when researching for my project:
-Various student projects that I looked at included:
-ramon
-paul dwyer-choose your story
-https://github.com/JoGorska/hotel-booking/blob/main/run.py- as specified in slack MVP doc
+Modules:
+RE-Email verification
+Colorama-coloring font
 
-Content-git commit messages website per assessor feedback provided on PP2, made an effort to name my git commits more imperative
+Various student projects that I looked at included:
+Ramon Link:
+Raul dwyer-choose your story
+Kevin Sherries: Horoscope...importing lists informed my idea for bringing feedback in
+
+Reviewed the following projects which were listed in 'The Importance of MVP-PP3' document shared on Slack:
+
+Hotel Bookings (useful as also data-centric):https://github.com/JoGorska/hotel-booking/blob/main/run.py
+Event Scheduler (useful as also data-centric): https://github.com/elainebroche-dev/ms3-event-scheduler
+
+
+
+Content-git commit messages website per assessor feedback provided on PP2, made an effort to name my git commits more imperative, informed the format of my commit messages: https://cbea.ms/git-commit/
+
 Video on installing colorama: https://www.google.com/search?q=import+colorama+python&oq=Import+colorama+python&aqs=chrome.0.0i512j0i22i30j0i390l3.6454j0j7&sourceid=chrome&ie=UTF-8#kpvalbx=__K1eY9aBHcKYhbIP2vaq2AY_35
 
 <b>Minimum Viable Product Logic</b>
