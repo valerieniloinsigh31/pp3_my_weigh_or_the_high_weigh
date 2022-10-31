@@ -79,25 +79,19 @@ def user_login():
     """
     login= SHEET.worksheet("login_info").get_all_values()
     username_valid= (login[1])
-    password_valid= (password[2])
-    print(username_valid)
-    print(password_valid)
+    password_valid= (login[2])
 
-red_list = SHEET.worksheet("variance_red").get_all_values()
-    red_list_row = (red_list[0])
+    username_input = input('Enter your username here:\n')
 
-
-username_input = input('Enter your username here:\n')
-
-    if username_input == 'personal_trainer':
-        print(f"Hi {username_valid}, please enter your usual password.")
+    if username_input == username_valid:
+    print("Hi personal_trainer, please enter your usual password.")
     else:
-        print('Invalid username, try again\n')
+    print('Invalid username, try again\n')
 
-password_input = input('Enter your password here:\n')
+    password_input = input('Enter your password here:\n')
 
-    if password_input == 'ilovethegym':
-        print: (f"Welcome back {username_valid}")
+    if password_input == password_valid:
+        print: ("Welcome back personal_trainer")
     else:
         print('Invalid password, try again\n')
 """
@@ -417,6 +411,7 @@ def weight_change_total_range():
     Prints an f string to the python terminal f"The total weight loss over the
     course of the programme so far has ranged from {}kg to {}kg."
     """
+    variable 1=lowest kg extracted from google sheets
     print(f"")
 
 """FUNCTION 12:Average weight loss function.
@@ -425,6 +420,18 @@ def weight_change_total_average():
     """
     Calculates the average total weight loss per client over the course of the programme and prints
     f string (f"The average total weight loss for the programme to date has been {}kg)
+    """
+
+    """  
+    FUNCTION 13: Exit app (and reset week 9 to blank-to accommodate manual calcs
+    """
+
+def exit_app():
+    """ 
+    Must be selected by user to exit app and prompts pop function to remove the appended rows so that
+    app functionality resets. This is because the variance split tabs are not automated so
+    entire app must be rest so next user can use app 
+    Lines that need to have rows removed...week_ends, weight_change, variance)
     """
     
 
