@@ -236,13 +236,22 @@ def variance_split():
 """  
 FUNCTION 9: Red list feedback
 """
-def redlist_feedback():
+def list_feedback():
     """
     For the red list, clients that did not meet expectation give the
     user the option to load their feedback comments to the python terminal
     use if else-pull comments for people user selects...red list poeple
     use index, format feedback in the correct format
+    user can access feedback logged from any client if they wish
     """
+    print("Well so there you have it, the culprits who did not stay on track are as follows:")
+    print(red_list_row)
+    print("Would you like to have a peek at some of the feedback logged during the week by these hooligans to see whether they have a valid exucse?")
+    print("Enter the name of the first hooligan you would like to get a comment from")
+    #input:
+    #if Paul, John, James, Declan, Mike, Ian...give an option to pull different feedback rows for each. Paul=row 0 John=row 1 James=row 2
+    #Declan=row 3, Mike=row 4, Ian=row 5
+
 
 """FUNCTION 10: Contact red list
 """
@@ -291,6 +300,7 @@ def main():
     new_variance_data = calculate_variance(new_weight_change_data)
     update_variance_worksheet(new_variance_data)
     variance_split()
+    list_feedback()
 
 
 
