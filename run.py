@@ -85,15 +85,15 @@ def user_login():
     print(f"Password expected: {password_valid}")
 
     username_input = input('Enter your username here:\n')
-
-    if username_input == username_valid:
+    
+    if username_input == ''.join(username_valid):
         print("Hi personal_trainer, please enter your usual password.")
     else:
         print('Invalid username, try again\n')
 
     password_input = input('Enter your password here:\n')
 
-    if password_input == password_valid:
+    if password_input == ''.join(password_valid):
         print("Welcome back personal_trainer")
     else:
         print('Invalid password, try again\n')
