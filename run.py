@@ -69,7 +69,7 @@ def print_bodybuilder():
            \__/ ''')   
 
 """ 
-FUNCTION 1: Using login and password from google sheets
+FUNCTION 1: Log into access database, using login and password from google sheets
 """
 def user_login():
     """
@@ -78,7 +78,7 @@ def user_login():
     
 
 """
-FUNCTION 2: Collect latest weigh-in data from user
+FUNCTION 2: Collect latest weigh-in data from user and includes error handling validation
 """
 
 def get_weighin_data(): 
@@ -120,8 +120,7 @@ def validate_data(values):
 
         return True 
 """
-FUNCTION 3: Moving weigh-in data to the google sheets
-
+FUNCTION 3: Move weigh-in data to the google sheets
 """
 def update_weighin_worksheet(data):
     """ 
@@ -133,7 +132,7 @@ def update_weighin_worksheet(data):
     print ("Week 9 end-of-week weigh-in info updated successfully.\n")
 
 """  
-FUNCTION 4: Calculating change in weight
+FUNCTION 4: Calculate change in weight for latest week
 """
 def calculate_weight_change(week_ends_row):
     """  
@@ -157,7 +156,7 @@ def calculate_weight_change(week_ends_row):
     return weight_change_data 
 
 """  
-FUNCTION 5: Inserting weight change data into google sheets
+FUNCTION 5: Move weight change data into google sheets
 """
 def update_weightchange_worksheet(weight_change_data):
     """ 
@@ -169,8 +168,9 @@ def update_weightchange_worksheet(weight_change_data):
     print ("Week 9 weight change info updated successfully.\n")
 
 """  
-FUNCTION 6: Calculating variance-Expected weight loss versus actual weight 
-loss loop. The format of this function is based on function 4
+FUNCTION 6: Calculate variance. Variance being the difference 
+between expected weight loss and actual weight 
+loss. The format of this function is based on function 4.
 """
 def calculate_variance(weight_change_row):
     """  
@@ -196,7 +196,7 @@ def calculate_variance(weight_change_row):
     return variance_data 
 
 """ 
-FUNCTION 7: Inserting variance data into google sheets
+FUNCTION 7: Move variance data into google sheets
 """
 def update_variance_worksheet(variance_data):
     """ 
@@ -208,7 +208,7 @@ def update_variance_worksheet(variance_data):
     print ("Week 9 variance info updated successfully.\n")
 
 """  
-FUNCTION 8: Variance lists
+FUNCTION 8: Divide variance into two lists: Clients who met expectation and clients that didn't
 
 """  
 def variance_split():
@@ -224,32 +224,32 @@ def variance_split():
     green_list = SHEET.worksheet("variance_green").get_all_values()
     green_list_row = (green_list[0])
     print(Fore.GREEN + 'Firstly, here is a list of clients who met their expectation.')
-    print(green_list_row)
+    print(Fore.GREEN+green_list_row)
 
     red_list = SHEET.worksheet("variance_red").get_all_values()
     red_list_row = (red_list[0])
     print(Fore.RED + 'Now, here is a list of clients who did not meet their expectation.')
-    print(red_list_row)
+    print(Fore.RED+red_list_row)
 
 
 """  
-FUNCTION 9: Red list feedback
+FUNCTION 9: Gives user option to print client feedback from that week
 """
 def list_feedback():
     """
-    For the red list, clients that did not meet expectation give the
-    user the option to load their feedback comments to the python terminal
-    use if else-pull comments for people user selects...red list people
-    use index, format feedback in the correct format
-    user can access feedback logged from any client if they wish
+    Gives the user the option to print the week 9 stored client 
+    feedback comments to the python terminal.
+    Lists clients who did not meet expectation that week as more inclined to want
+    to access their feedback.
     """
     print("Well so there you have it, the culprits who did not stay on track are as follows:")
     print(red_list_row)
-    print("Would you like to have a peek at some of the feedback logged during the week by these hooligans to see whether they have a valid exucse?")
-    print("Enter the name of the first hooligan you would like to get a comment from")
+    print("Have a look at some of the feedback provided by clients during the week.")
+    print("Please enter the number of the first client you would like to get a comment from-maybe someone who did not meet expectation?")
     #input:
     #if Paul, John, James, Declan, Mike, Ian...give an option to pull different feedback rows for each. Paul=row 0 John=row 1 James=row 2
     #Declan=row 3, Mike=row 4, Ian=row 5
+    #include error handling
 
 
 """FUNCTION 10: Contact red list
