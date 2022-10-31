@@ -248,59 +248,70 @@ def list_feedback():
     print(red_list_row)
     print("Have a look at some of the feedback provided by clients during the week.")
     print("Please enter the number of the first client you would like to get a comment from-maybe someone who did not meet expectation?")
-    #input:
-    #if Paul, John, James, Declan, Mike, Ian...give an option to pull different feedback rows for each. Paul=row 0 John=row 1 James=row 2
-    #Declan=row 3, Mike=row 4, Ian=row 5
-    #define all of the indl client functions before calling-nested within main list_feedback function or if not nested-before
-    #week_starts = SHEET.worksheet("week_starts").get_all_values()
-    #week_starts_row = (week_starts[-1])
-    # include error handling
-
+    
     """   
     Nested functions: One per client, Paul, John, James, Declan, Mike, Ian
     """
     def paul():
-        week_starts = SHEET.worksheet("week_starts").get_all_values()
-        week_starts_row = (week_starts[-1])
+        paul_feedback = SHEET.worksheet("logged_feedback").get_all_values()
+        paul_feedback_row = (paul_feedback[0])
+        print(paul_feedback_row)
 
+    def john():
+        john_feedback = SHEET.worksheet("logged_feedback").get_all_values()
+        john_feedback_row = (john_feedback[3])
+        print(john_feedback_row)
 
+    def james():
+        james_feedback = SHEET.worksheet("logged_feedback").get_all_values()
+        james_feedback_row = (james_feedback[6])
+        print(james_feedback_row)
 
-     while True:
-        clear()
-        print("Please enter the number of the first client you would like to get a feedback comment from-maybe someone who did not meet expectation?\n")
-        print('1. Paul')
-        print('2. John')
-        print('3. James')
-        print('4. Declan')
-        print('5. Mike')
-        print('6. Ian')
-        print('7. Exit')
-        print('\nPlease select an option by entering a number between 1 and 7')
+    def declan():
+        declan_feedback = SHEET.worksheet("logged_feedback").get_all_values()
+        declan_feedback_row = (declan_feedback[9])
+        print(declan_feedback_row)
 
-        choice = input('Enter your single digit choice here:\n')
+    def mike():
+        mike_feedback = SHEET.worksheet("logged_feedback").get_all_values()
+        mike_feedback_row = (mike_feedback[12])
+        print(mike_feedback_row)
 
-        if choice == '1':
-            paul()
-        elif choice == '2':
-            john()
-        elif choice == '3':
-            james()
-        elif choice == '4':
-            declan()
-        elif choice == '5':
-            mike()
-        elif choice == '6':
-            ian()
-        elif choice == '7':
-            print('Goodbye !')
-            break
-        else:
-            print('Invalid selection. Please enter a digit between 1 and 7\n')
-            input('Press Enter to continue...\n')
+    def ian():
+        ian_feedback = SHEET.worksheet("logged_feedback").get_all_values()
+        ian_feedback_row = (ian_feedback[15])
+        print(ian_feedback_row)
 
+        
+    print("Please enter the number of the first client you would like to get a feedback comment from-maybe someone who did not meet expectation?\n")
+    print('1. Paul')
+    print('2. John')
+    print('3. James')
+    print('4. Declan')
+    print('5. Mike')
+    print('6. Ian')
+    print('7. Exit')
+    print('\nPlease select an option by entering a number between 1 and 7')
 
+    choice = input('Enter your single digit choice here:\n')
 
-
+    if choice == '1':
+         paul()
+    elif choice == '2':
+        john()
+    elif choice == '3':
+        james()
+    elif choice == '4':
+        declan()
+    elif choice == '5':
+        mike()
+    elif choice == '6':
+        ian()
+    elif choice == '7':
+        print('Goodbye !')
+    else:
+        print('Invalid selection. Please enter a digit between 1 and 7\n')
+        input('Press Enter to continue...\n')
 """FUNCTION 10: Contact red list
 """
 def contact_client():
