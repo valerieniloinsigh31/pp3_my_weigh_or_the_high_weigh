@@ -11,8 +11,6 @@ from colorama import Fore
 colorama.init(autoreset=True)
 
 
- 
-
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -33,7 +31,8 @@ def print_bodybuilder():
     Prints the graphic of a bodybuilder, as
     extracted from https://www.asciiart.eu/sports-and-outdoors/other. Art by Joan Stark
     """
-    print('''     ,#####,
+    print(''' 
+                ,#####,
                  #_   _#
                  |a` `a|
                  |  u  |
@@ -66,7 +65,8 @@ def print_bodybuilder():
            /\/\           /"""`8.__
            |oo|           \__.//___)
            |==|
-           \__/ ''')   
+           \__/         
+           ''')   
 
 """ 
 FUNCTION 1: Log into access database, using login and password from google sheets
@@ -224,12 +224,12 @@ def variance_split():
     green_list = SHEET.worksheet("variance_green").get_all_values()
     green_list_row = (green_list[0])
     print(Fore.GREEN + 'Firstly, here is a list of clients who met their expectation.')
-    print(Fore.GREEN+green_list_row)
+    print(green_list_row)
 
     red_list = SHEET.worksheet("variance_red").get_all_values()
     red_list_row = (red_list[0])
     print(Fore.RED + 'Now, here is a list of clients who did not meet their expectation.')
-    print(Fore.RED+red_list_row)
+    print(red_list_row)
 
 
 """  
@@ -243,18 +243,67 @@ def list_feedback():
     to access their feedback.
     """
     print("Well so there you have it, the culprits who did not stay on track are as follows:")
+    red_list = SHEET.worksheet("variance_red").get_all_values()
+    red_list_row = (red_list[0])
     print(red_list_row)
     print("Have a look at some of the feedback provided by clients during the week.")
     print("Please enter the number of the first client you would like to get a comment from-maybe someone who did not meet expectation?")
     #input:
     #if Paul, John, James, Declan, Mike, Ian...give an option to pull different feedback rows for each. Paul=row 0 John=row 1 James=row 2
     #Declan=row 3, Mike=row 4, Ian=row 5
-    #include error handling
+    #define all of the indl client functions before calling-nested within main list_feedback function or if not nested-before
+    #week_starts = SHEET.worksheet("week_starts").get_all_values()
+    #week_starts_row = (week_starts[-1])
+    # include error handling
+
+    """   
+    Nested functions: One per client, Paul, John, James, Declan, Mike, Ian
+    """
+    def paul():
+        week_starts = SHEET.worksheet("week_starts").get_all_values()
+        week_starts_row = (week_starts[-1])
+
+
+
+     while True:
+        clear()
+        print("Please enter the number of the first client you would like to get a feedback comment from-maybe someone who did not meet expectation?\n")
+        print('1. Paul')
+        print('2. John')
+        print('3. James')
+        print('4. Declan')
+        print('5. Mike')
+        print('6. Ian')
+        print('7. Exit')
+        print('\nPlease select an option by entering a number between 1 and 7')
+
+        choice = input('Enter your single digit choice here:\n')
+
+        if choice == '1':
+            paul()
+        elif choice == '2':
+            john()
+        elif choice == '3':
+            james()
+        elif choice == '4':
+            declan()
+        elif choice == '5':
+            mike()
+        elif choice == '6':
+            ian()
+        elif choice == '7':
+            print('Goodbye !')
+            break
+        else:
+            print('Invalid selection. Please enter a digit between 1 and 7\n')
+            input('Press Enter to continue...\n')
+
+
 
 
 """FUNCTION 10: Contact red list
 """
-def contact_redlist():
+def contact_client():
     """
     Gives personal trainer (user) the option to retrieve contact details for clients
     who did not meet expectation so he can contact them (e.g. if feedback not adequate)
@@ -300,6 +349,7 @@ def main():
     update_variance_worksheet(new_variance_data)
     variance_split()
     list_feedback()
+    
 
 
 
