@@ -33,8 +33,7 @@ def print_bodybuilder():
     Prints the graphic of a bodybuilder, as
     extracted from https://www.asciiart.eu/sports-and-outdoors/other. Art by Joan Stark
     """
-    print('''
-                 ,#####,
+    print('''     ,#####,
                  #_   _#
                  |a` `a|
                  |  u  |
@@ -52,7 +51,7 @@ def print_bodybuilder():
   \ : |       |_____._____|       | : /
   /   (       |----|------|       )   \
  /... .|      |    |      |      |. ...\
-|::::/''     /     |       \     ''\::::|
+|::::/'' jgs /     |       \     ''\::::|
 '""""       /'    .L_      `\       """"'
            /'-.,__/` `\__..-'\
           ;      /     \      ;
@@ -67,7 +66,7 @@ def print_bodybuilder():
            /\/\           /"""`8.__
            |oo|           \__.//___)
            |==|
-           \__/. ''')   
+           \__/ ''')   
 
 """ 
 FUNCTION 1: Using login and password from google sheets
@@ -240,7 +239,7 @@ def list_feedback():
     """
     For the red list, clients that did not meet expectation give the
     user the option to load their feedback comments to the python terminal
-    use if else-pull comments for people user selects...red list poeple
+    use if else-pull comments for people user selects...red list people
     use index, format feedback in the correct format
     user can access feedback logged from any client if they wish
     """
