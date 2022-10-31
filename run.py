@@ -67,7 +67,7 @@ def print_bodybuilder():
            /\/\           /"""`8.__
            |oo|           \__.//___)
            |==|
-           \__/.    \n Welcome to 'My Weigh or the High Weigh'\n ''')   
+           \__/. ''')   
 
 """ 
 FUNCTION 1: Using login and password from google sheets
@@ -218,16 +218,19 @@ def variance_split():
     that did not meet expectation.
     The list of people that did meet expectation should be in green.
     The list of people that did not meet expectation should be in red. 
+    Print only names, not values, use index or split (row 1 only)
     """
 
     print("Dividing out client results into those that met their weight loss targets and those who did not...")
     green_list = SHEET.worksheet("variance_green").get_all_values()
+    green_list_row = (green_list[0])
     print(Fore.GREEN + 'Firstly, here is a list of clients who met their expectation.')
-    print(green_list)
+    print(green_list_row)
 
     red_list = SHEET.worksheet("variance_red").get_all_values()
+    red_list_row = (red_list[0])
     print(Fore.RED + 'Now, here is a list of clients who did not meet their expectation.')
-    print(red_list)
+    print(red_list_row)
 
 
 """  
@@ -237,6 +240,8 @@ def redlist_feedback():
     """
     For the red list, clients that did not meet expectation give the
     user the option to load their feedback comments to the python terminal
+    use if else-pull comments for people user selects...red list poeple
+    use index, format feedback in the correct format
     """
 
 """FUNCTION 10: Contact red list
