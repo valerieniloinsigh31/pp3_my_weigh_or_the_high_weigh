@@ -11,11 +11,12 @@ User Stories:
 -The intended user is the personal trainer who is tracking his/her clients who are all following the 'My Weigh or the High Weigh' weight loss programme.
 -The app enables the user to easily access information and to glean quick insights from the data using the various functions. It is an app designed to assist a personal trainer to track their clients.
 -The app will inform the implementation/weekly design of the weight loss programme, alerting the personal trainer to changes that may be necessary and how effective the weight loss programme is for the clients on a weekly and inception-to-date basis. The various functions, such as details on weekly weight change and whether a client met their expected weekly weight loss offer immediate feedback to the user. This influences the exercise and nutritional adjustments that may need to be made and highlights what clients need to be developed further/focussed on for the upcoming week. The programme is a malleable, rolling programme and the expectations are adjusted each week based on the feedback from the app. The feedback function also allows the user to access stored client feedback from the week that may explain deviations from weight loss expectation without having to pursue further explanation.
--There is a function that divides clients into those that met their weight loss expectations and those that didn't. There two sub groups are printed in two separate lists to offer concise, easily interpreted feedback for the user. The user is then given the option to select which clients they would like to see the stored weekly feedback from. The idea here is that the user is more inclined to want to see the feedback from those who did not meet expectation. The function that follows this allows the user to bring up contact details for various clients where required. The idea here is that the user may want to follow up with clients whose feedback did not align with their results. The user can then send an email to the client to get direct feedback as to why the setback may have occurred (e.g. social even, injury, diet, didn't meet exercise goals etc.). The setbacks will be documented accordingly and considered in the weight loss programme going forward. 
+-Careful consideration was given to the order of the functions and what google sheets tabs needed to be populated in order to fill various rows that the next function relied on. Additionally, indentation and nested functions were carefully considered.
+-There is a function that divides clients into those that met their weight loss expectations and those that didn't. Two sub groups are printed into two separate lists to offer concise, easily interpreted feedback to the user. The user is then given the option to select which clients they would like to see the stored weekly feedback for. The idea here is that the user is more inclined to want to see the feedback from those who did not meet expectation. The function that follows this allows the user to bring up contact details for various clients, where required. The idea here is that the user may want to follow up with clients whose feedback did not align with their weekly results. The user can then contact the client they desire in order to get direct feedback as to why the setback may have occurred (e.g. social event, injury, diet, didn't meet exercise goals etc.). The setbacks will be documented accordingly and considered in the weight loss programme going forward. The feedback will also inform the user about what to expect from clients going forward and potentially what questions need to be asked in planning for the weeks ahead.
 -The app also offers overall insights into the success of the programme that can inform advertising or assist with advertising for a future intake of clients, for example with the weight loss range function, the user can readily and easily access the range of weight loss (minimum-maximum) from the date of inception of the programme to present and this can be used for advertisement purposes on instagram and facebook etc., in order to promote the program to the next intake of clients.
--Weekly and overall weight loss is present in kg and must in numerical format and include decimal places.
--A relatively small control group of six men in their thirties with similar sedentary full-time professions, who had small families with moderate exercise levels prior to starting the programme were selected so that they were directly comparable.
--Effectiveness of supplements for weight loss: One distinguishing element between the candidiates was that some wanted to take supplements (whey isolate protein and createin monohydrate) and half of the group did not. The clients who used supplements were distinguished with a '*'. This will enable the user to track whether there was any noticeable trends for the users of supplements versus those who opted not to use them. Variations could include increased energy levels, accelarated level of muscle gain or potential a lesser level of weight loss due to water retention initially. Distinctions between the groups will be noted more in the long-term and may not be evident within the nine week timeframe currently available.
+-Weekly and overall weight loss is present in kg and must in numerical format and include decimal places. Error handling validations and print messages have been included in the code to ensure the user is informed about this.
+-A relatively small control group of six men in their thirties with similar, sedentary full-time professions and each rearing small families with moderate exercise levels prior to starting the programme were selected so that they were directly comparable.
+-Effectiveness of supplements for weight loss: One distinguishing element between the candidiates was that some wanted to take supplements (whey isolate protein and createin monohydrate) and half of the group did not. The clients who used supplements are distinguished with a '*' in the google sheets and the terminal. This will enable the user to track whether there was any noticeable trends for the users of supplements versus those who opted not to use them. Variations could include increased energy levels, accelarated level of muscle gain or potentially a lesser level of weight loss due to water retention initially. Distinctions between the groups will be noted more in the long-term and may not be evident within the nine week timeframe currently available. The user can use this valuable feedback to inform their recommendations on supplements going forward.
 
 
 <b>Design Choices:</b>
@@ -25,15 +26,15 @@ two variance lists could be coloured separately (green/red)
 Typography: The typography should be clear and consistent. It should enable the data to be presented in a way that is clear, not over crowded, confusing or muddled. This was ensured with spacing, language and use of '\n'.
 
 <b>Planning</b>
-I used both Balsaimq Wireframes and Lucidchart Flowchart to assist in planning out the intent and functions of the app. Please see the extracts below:
+<p>I used Lucidchart Flowchart to assist in planning out the intent and functions of the app. Please see the extracts below:</p>
 
-Balsamiq Wireframes:
-
-Lucidchart flowchart:
+<b>Lucidchart flowchart:</b>
 
 Please see excerpts below:
 
 I started with extremely detailed notes and planning descriptions and refined this as I went.
+The visual aspect of the lucid chart images greatly assisted me in formulating the logic needed in 
+designing each of my functions.
 
 Goals:
 Order of the functions:
@@ -41,16 +42,21 @@ Order of the functions:
 <b>Features</b>
 
 <b>Existing Features</b>
--Drawing influence from the 'Love Sandwiches' walkthrough project, the project is drawing insights from a database maintained on google sheets and extracting various insights (using functions) that present the information in a useful way to the user.
-Some of the features/functions include:
--Log in: Username and password required. This is to ensure that only the personal trainer(user) who has created the username and password has access to the  weight loss information. 
-Error-handling: These are a number of functions/code instances inserted that trigger errors if the correct information is not input (for example when the user needs to type in the latest week 9 week-end weigh-in information, the information must be for all six of the clients in kg format, accordingly, errors will be triggered if it is not in numerical format, if it is not a float and if less than six values are entered)...such as Log In, Entering latest weigh-in data, Choosing client for feedback and contact information
--The user is given options to prompt a number of different functions that offer different insights into the progress of the candidates so far, such as:
--Calculate the change in weight for the latest week on a client-by-client basis
--Calculate which clients met weight loss expectations and which didn't
--Bring up contact information for those that did not meet their weight loss expectation so that the personal trainer (user) can get more feedback
--Calculate week with maximum and minimum weight loss and present as a range
--Also, user can assess whether there were any emerging trends between candidates who used supplements and those who didn't
+-Drawing influence from the 'Love Sandwiches' walkthrough project, the project is manipulating a stored, malleable database maintained on google sheets and extracting various insights (using functions) that present the information in a useful way to the user.
+
+<b>Some of the features/functions include:</b>
+<ul>
+<li>Log in: Username and password required. This is to ensure that only the personal trainer(user) who has created the username and password has access to the  weight loss information.</li>
+<li>Error-handling: These are a number of functions/code instances inserted that trigger errors if the correct information is not input (for example when the user needs to type in the latest week 9 week-end weigh-in information, the information must be for all six of the clients in kg format, accordingly, errors will be triggered if it is not in numerical format, if it is not a float and if less than six values are entered)...such as Log In, Entering latest weigh-in data, Choosing client for feedback and contact information.</li>
+<ol>
+The user is given options to prompt a number of different functions that offer different insights into the progress of the candidates so far, such as:
+<li>-Calculate the change in weight for the latest week on a client-by-client basis.</li>
+<li>Calculate which clients met weight loss expectations and which didn't.</li>
+<li>Bring up contact information for those that did not meet their weight loss expectation so that the personal trainer (user) can get more feedback.</li>
+<li>Calculate week with maximum and minimum weight loss and present as a range.</li>
+</ol>
+-Also, user can assess whether there were any emerging trends between candidates who used supplements and those who didn't.
+</ul>
 
 <b>Features Left to Implement</b>
 
@@ -97,6 +103,9 @@ Codestyle:
 <b>Further Testing</b>
 
 <b>Known Bugs</b>
+One limitation of the design is that there are a number of tabs with manual formulae included within 
+the Google Sheets document. The code is written in a certain order so that everything works and is populated in the correct order. But, the manual formulae will require update on each additional entry of the app. For example, there are two tabs, 'variance_green' and 'variance_red' that has manual formulas that splits the variance between expected weight loss and actual weight loss into the clients who met expectation and those that did not meet expectation. This formulae are linked to the newly appended row in the variance tab (e.g. row 10) so will not update on the next running of the app when another row is appended unless the formulae are manually updated (e.g. changed from row 10 to row 11). In future versions of the app, I could design a workaround of this to autmate this feature but for now, there is a printed reminded included at the end of the app, reminding the personal trainer 'Please update manual rows within google sheets before logging out.'
+
 
 <b>Deployment</b> 
 -This project was the first backend project (previous projects had been front end, HTML/CSS and Javascript)
@@ -243,10 +252,11 @@ Share Spreadsheet Image:
 <b>Credits:</b>
 Code Institute tutorials-particularly the 'Love Sandwiches' Walkthrough Project and Slack
 Ideas-'Love Sandwiches walkthrough project'
-Slack-Read queries and viewed different student repositories on Slack when researching for my project:
-Modules:
+Slack-Read queries and viewed different student repositories on Slack when researching for my project-a list of these influences included below
+Modules imported:
 RE-Email verification
 Colorama-coloring font
+Cover image: ASCII Art Archive: https://www.asciiart.eu/sports-and-outdoors/other
 
 Various student projects that I looked at included:
 Ramon Link:
@@ -257,6 +267,7 @@ Reviewed the following projects which were listed in 'The Importance of MVP-PP3'
 
 Hotel Bookings (useful as also data-centric):https://github.com/JoGorska/hotel-booking/blob/main/run.py
 Event Scheduler (useful as also data-centric): https://github.com/elainebroche-dev/ms3-event-scheduler
+I also drew inspiration from the format of the README from the Event Scheduler repositary
 
 
 
@@ -265,25 +276,26 @@ Content-git commit messages website per assessor feedback provided on PP2, made 
 Video on installing colorama: https://www.google.com/search?q=import+colorama+python&oq=Import+colorama+python&aqs=chrome.0.0i512j0i22i30j0i390l3.6454j0j7&sourceid=chrome&ie=UTF-8#kpvalbx=__K1eY9aBHcKYhbIP2vaq2AY_35
 
 <b>Minimum Viable Product Logic</b>
-Building on the success of PP2, I decided to not overly complicate my choice of project and to build on the knowledge acquired in tutorials and the walk-through project to layer on further code (using the walkthrough project code input as boilerplate code and editing this) as opposed to trying to implement entirely new concepts and code. 
- Additionally, I committed to more interaction with slack and the various supports (tutor/mentor) on this project as it had helped me greatly in PP2. I ensured to book my three recommended mentor meetings for this project and the inception meeting was extremely helpful as the mentor talked through my idea and offered insightful feedback with clear goals for the following mentor meetings.
+Building on the success of PP2, I decided to not overly complicate my choice of project and to build on the knowledge acquired in tutorials and the walk-through project to layer on further code (using the walkthrough project code input as boilerplate code and editing this/building my own code from this using this as a foundation) as opposed to trying to implement entirely new concepts and code. 
 
-As advised, I took on the assessors recommentations from the PP2 feedback and applied the suggested improvements to this project.
+ Additionally, I committed to more interaction with slack and the various supports (tutor support interactions/mentor meetings) on this project as it had helped me greatly in PP2. I ensured to book my three recommended mentor meetings for this project and the inception meeting was extremely helpful as the mentor talked through my idea and offered insightful feedback with clear goals for the following mentor meetings.
+
+As advised, I took on the assessors recommendations from the PP2 feedback and applied the suggested improvements to this project.
 
 One of these recommendations, which I ensured to apply from the inception of PP3 was the ensuring the git commits were in imperative format. I received the following feedback from the assessor:
 
    'Going forward, ensure that all commit messages are in the imperative mood (Add…, Fix…, Style…, Edit…) and as descriptive as possible, within 50 characters, outlining the atomic change made. You can use the following link for reference on how to improve your commit messages - https://cbea.ms/git-commit/'
 
 <b>Overview of the Project</b>
-I decided choose a blend between project 0 and project 1 in that it is a survey of sorts but a repeated, accurate survey that follows specific data of specific people with a view to aiding in the implementation and application of a weight loss plan. The app is designed to assist personal trainers in tracking the progress of their clients and their programmes. The app will give the user an insight into how effective their weight loss programme is and inform them about what areas need to be adjusted. The purpose of the project is to offer insights on the implementation of a weight loss programme for control group of six different candidates of a similar profile (male, mid thirties, moderate level of activity, non-vegetarian, no food intolerances, each bringing up small, young families with sedentary professions). Half of the candidiates took a daily dose of whey isolate protein and creatine and the other half did not and therefore attempts will be made to gain insights from whether supplementation aided in weight loss/had an affect on the programme. Candidates will be asked to provide weekly explanations for setbacks in the programme, if applicable and these will be documented and added to the google sheets database.
+I decided choose a blend between project 0 and project 1 in that it is a data-centric survey of sorts but a repeated, accurate survey that follows specific data of specific people with a view to aiding in the implementation and application of a weight loss plan. The app is designed to assist personal trainers in tracking the progress of their clients and their programmes. The app will give the user an insight into how effective their weight loss programme is and inform them about what areas need to be adjusted. The purpose of the project is to offer insights on the implementation of a weight loss programme for control group of six different candidates of a similar profile (male, mid thirties, moderate level of activity, non-vegetarian, no food intolerances, each bringing up small, young families with sedentary professions). Half of the candidiates took a daily dose of whey isolate protein and creatine and the other half did not and therefore attempts will be made to gain insights from whether supplementation aided in weight loss/had an affect on the programme. Candidates will be asked to provide weekly explanations for setbacks in the programme, if applicable and these will be documented and added to the google sheets database.
 
-Linking up with Google Sheets:
-Imported libraries:
+OTHER CONSIDERATIONS:
+
+
 Refactoring code to streamline project: Is there any code that was refactored to streamline project:
-Application Programming Interface (API)-Google Cloud Platform-walkthrough followed:
-API-Google Drive and API-Google Sheets
-Object Orientated Programming:
-Importing external libraries:
+Object Orientated Programming: has any of this been included...
+Iteration...loops instead..appending rows...can manual formula be made automated
+
 
 
 

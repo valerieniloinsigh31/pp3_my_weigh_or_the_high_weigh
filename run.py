@@ -70,14 +70,36 @@ def print_bodybuilder():
     ''')
 
 """ 
-FUNCTION 1: Log into access database, using login and password from google sheets
+FUNCTION 1: Log in to access database, using login and password from google sheets
 """
 def user_login():
     """
     Get username and password from the user, validate from data saved on google sheets
+    could use try: except and permissionerror
     """
-    
+    login= SHEET.worksheet("login_info").get_all_values()
+    username_valid= (login[1])
+    password_valid= (password[2])
+    print(username_valid)
+    print(password_valid)
 
+red_list = SHEET.worksheet("variance_red").get_all_values()
+    red_list_row = (red_list[0])
+
+
+username_input = input('Enter your username here:\n')
+
+    if username_input == 'personal_trainer':
+        print(f"Hi {username_valid}, please enter your usual password.")
+    else:
+        print('Invalid username, try again\n')
+
+password_input = input('Enter your password here:\n')
+
+    if password_input == 'ilovethegym':
+        print: (f"Welcome back {username_valid}")
+    else:
+        print('Invalid password, try again\n')
 """
 FUNCTION 2: Collect latest weigh-in data from user and includes error handling validation
 """
@@ -322,8 +344,6 @@ def contact_client():
     meet expectation when the feedback that they have offered is not adequate.
     Format of function is similar to function 9.
     """
-    print("Would you prefer to contact client yourself?")
-    print("Please enter the number of the first client you would like to contact?")
     
     """   
     Nested functions: One per client, Paul, John, James, Declan, Mike, Ian
@@ -393,11 +413,11 @@ FUNCTION 11: Range function.
 """
 def weight_change_total_range():
     """
-    Calculates client with highest total weight loss (max)
-    Calculates client with lowest total weight loss (min)
+    Pulls in value from max and min tabs in google sheet
     Prints an f string to the python terminal f"The total weight loss over the
     course of the programme so far has ranged from {}kg to {}kg."
     """
+    print(f"")
 
 """FUNCTION 12:Average weight loss function.
 """
@@ -406,6 +426,7 @@ def weight_change_total_average():
     Calculates the average total weight loss per client over the course of the programme and prints
     f string (f"The average total weight loss for the programme to date has been {}kg)
     """
+    
 
 
 """
