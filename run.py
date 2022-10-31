@@ -32,7 +32,8 @@ def print_bodybuilder():
     extracted from https://www.asciiart.eu/sports-and-outdoors/other. Art by Joan Stark
     """
     print(''' 
-                ,#####,
+    Art by Joan Stark
+                 ,#####,
                  #_   _#
                  |a` `a|
                  |  u  |
@@ -65,8 +66,8 @@ def print_bodybuilder():
            /\/\           /"""`8.__
            |oo|           \__.//___)
            |==|
-           \__/         
-           ''')   
+           \__/
+    ''')
 
 """ 
 FUNCTION 1: Log into access database, using login and password from google sheets
@@ -281,7 +282,6 @@ def list_feedback():
         ian_feedback = SHEET.worksheet("logged_feedback").get_all_values()
         ian_feedback_row = (ian_feedback[15])
         print(ian_feedback_row)
-
         
     print("Please enter the number of the first client you would like to get a feedback comment from-maybe someone who did not meet expectation?\n")
     print('1. Paul')
@@ -312,13 +312,81 @@ def list_feedback():
     else:
         print('Invalid selection. Please enter a digit between 1 and 7\n')
         input('Press Enter to continue...\n')
-"""FUNCTION 10: Contact red list
+"""
+FUNCTION 10: Contact client list
 """
 def contact_client():
     """
     Gives personal trainer (user) the option to retrieve contact details for clients
-    who did not meet expectation so he can contact them (e.g. if feedback not adequate)
+    so he can contact them. This may be most relevant for clients who did not
+    meet expectation when the feedback that they have offered is not adequate.
+    Format of function is similar to function 9.
     """
+    print("Would you prefer to contact client yourself?")
+    print("Please enter the number of the first client you would like to contact?")
+    
+    """   
+    Nested functions: One per client, Paul, John, James, Declan, Mike, Ian
+    """
+    def paul_contact():
+        paul_contact = SHEET.worksheet("contact").get_all_values()
+        paul_contact_row = (paul_contact[1])
+        print(paul_contact_row)
+
+    def john_contact():
+        john_contact = SHEET.worksheet("contact").get_all_values()
+        john_contact_row = (john_contact[2])
+        print(john_contact_row)
+
+    def james_contact():
+        james_contact = SHEET.worksheet("contact").get_all_values()
+        james_contact_row = (james_contact[3])
+        print(james_contact_row)
+
+    def declan_contact():
+        declan_contact = SHEET.worksheet("contact").get_all_values()
+        declan_contact_row = (declan_contact[4])
+        print(declan_contact_row)
+
+    def mike_contact():
+        mike_contact = SHEET.worksheet("contact").get_all_values()
+        mike_contact_row = (mike_contact[5])
+        print(mike_contact_row)
+
+    def ian_contact():
+        ian_contact = SHEET.worksheet("contact").get_all_values()
+        ian_contact_row = (ian_contact[6])
+        print(ian_contact_row)
+        
+    print("Please enter the number of the first client you would like to get contact details for?\n")
+    print('1. Paul')
+    print('2. John')
+    print('3. James')
+    print('4. Declan')
+    print('5. Mike')
+    print('6. Ian')
+    print('7. Exit')
+    print('\nPlease select an option by entering a number between 1 and 7')
+
+    choice = input('Enter your single digit choice here:\n')
+
+    if choice == '1':
+         paul_contact()
+    elif choice == '2':
+        john_contact()
+    elif choice == '3':
+        james_contact()
+    elif choice == '4':
+        declan_contact()
+    elif choice == '5':
+        mike_contact()
+    elif choice == '6':
+        ian_contact()
+    elif choice == '7':
+        print('Goodbye !')
+    else:
+        print('Invalid selection. Please enter a digit between 1 and 7\n')
+        input('Press Enter to continue...\n')
 
 """  
 FUNCTION 11: Range function.
