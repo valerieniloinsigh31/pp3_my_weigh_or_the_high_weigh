@@ -338,7 +338,7 @@ def list_feedback():
         user(login)
     else: 
         print("Here is the contact info.")
-        continue
+
 """
 FUNCTION 10: Contact client list
 """

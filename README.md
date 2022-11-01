@@ -111,7 +111,7 @@ the Google Sheets document. The code is written in a certain order so that every
 -This project was the first backend project (previous projects had been front end, HTML/CSS and Javascript)
 -This project required activiation of the GITHUB Student Developer pack, as provided by the Code Institute, per the below:
 
--Per Slack, requested Github Student Developer Pack activiation email and activated accordingly once received
+-Per Slack, requested Github Student Developer Pack activation email and activated accordingly once received
 -Activated Heroku and connect it to GITHUB profile per below:
 
 I selected manual deployment for the Walkthrough ('Love Sandwiches project') but updated to automatic deployment for this project and, accordingly, it was automatically connected to Heroku for dpeloyment and the usual deployment process could be followed on GITHUB thereafter, per below:
