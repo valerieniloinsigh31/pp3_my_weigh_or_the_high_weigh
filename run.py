@@ -465,6 +465,7 @@ def exit_app():
     exit= input(Fore.BLUE+"Would you like to exit the app? Please type 'y' to exit, 'c' to return to contacts or 'f' to return to feedback.")
     if exit == 'y':
         print(Fore.BLUE+"Goodbye personal trainer, have a great week training!")
+        user_login()
     elif exit == 'c':
         contact_client()
     elif exit == 'f':
