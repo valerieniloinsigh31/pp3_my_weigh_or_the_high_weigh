@@ -86,17 +86,17 @@ def user_login():
 
     username_input = input('Enter your username here:\n')
     
-    if username_input == ''.join(username_valid):
-        print("Hi personal_trainer, please enter your usual password.")
-    else:
-        print('Invalid username, try again\n')
+    if username_input != ''.join(username_valid):
+        print("Invalid username, try again.")
+        return user_login()
+    print('Hi personal_trainer, please enter your usual password."')
 
     password_input = input('Enter your password here:\n')
 
-    if password_input == ''.join(password_valid):
-        print("Welcome back personal_trainer")
-    else:
-        print('Invalid password, try again\n')
+    if password_input != ''.join(password_valid):
+        print("Invalid password, try again\n")
+        return user_login()
+    print(f'Welcome back {username_valid}\n')
 """
 FUNCTION 2: Collect latest weigh-in data from user and includes error handling validation
 """
