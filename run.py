@@ -137,11 +137,12 @@ def validate_data(values):
 
         return True 
 """
-FUNCTION 3: Move weigh-in data to the google sheets
+FUNCTION 3: Move weigh-in data to the google sheets.
 """
 def update_weighin_worksheet(data):
     """ 
-    Update week-end weigh-in worksheet, add new row with the values input by the user.
+    Update week-ends weigh-in worksheet, add new row with the values input by the user. These values should
+    also be added to the week_starts tab at the end of the run of an app so that the app rolls on each run
     """
     print ("Updating end-of-week weigh-in info for week 9...\n")
     weighin_worksheet = SHEET.worksheet("week_ends")
@@ -304,17 +305,17 @@ def list_feedback():
         print(ian_feedback_row)
         return list_feedback()
         
-    print("Please enter the number of a client you would like to get a feedback comment from-maybe someone who did not meet expectation? Select exit to move on.\n")
-    print('1. Paul')
-    print('2. John')
-    print('3. James')
-    print('4. Declan')
-    print('5. Mike')
-    print('6. Ian')
-    print('7. Exit')
-    print('\nPlease select an option by entering a number between 1 and 7')
+    print(Fore.BLUE+"Please enter the number of a client you would like to get a feedback comment from-maybe someone who did not meet expectation? Select exit to move on.\n")
+    print(Fore.BLUE+'1. Paul')
+    print(Fore.BLUE+'2. John')
+    print(Fore.BLUE+'3. James')
+    print(Fore.BLUE+'4. Declan')
+    print(Fore.BLUE+'5. Mike')
+    print(Fore.BLUE+'6. Ian')
+    print(Fore.BLUE+'7. Exit')
+    print(Fore.BLUE+'\nPlease select an option by entering a number between 1 and 7')
 
-    choice = input('Enter your single digit choice here:\n')
+    choice = input(Fore.BLUE+'Enter your single digit choice here:\n')
 
     if choice == '1':
          paul()
@@ -329,15 +330,16 @@ def list_feedback():
     elif choice == '6':
         ian()
     elif choice == '7':
-        print('Okay-you are done with the comments !')
+        print(Fore.RED+'Okay-you are done with the comments !')
     else:
-        print('Invalid selection. Please enter a digit between 1 and 7\n')
+        print(Fore.BLUE+'Invalid selection. Please enter a digit between 1 and 7\n')
        
-    contact = input('Would you like to see the contact information? Please type y to access contacts or n to exit.\n')
+    contact = input(Fore.YELLOW+'Would you like to see the contact information? Please type y to access contacts or n to exit.\n')
+   
     if contact != 'y':
-        user(login)
+        exit_app()
     else: 
-        print("Here is the contact info.")
+        print(Fore.YELLOW+"Here is the contact info.")
 
 """
 FUNCTION 10: Contact client list
@@ -389,17 +391,17 @@ def contact_client():
         print(ian_contact_row)
         return contact_client()
         
-    print("Please enter the number for the client you would like to get contact details for?\n")
-    print('1. Paul')
-    print('2. John')
-    print('3. James')
-    print('4. Declan')
-    print('5. Mike')
-    print('6. Ian')
-    print('7. Exit')
-    print('\nPlease select an option by entering a number between 1 and 7')
+    print(Fore.YELLOW+"Please enter the number for the client you would like to get contact details for?\n")
+    print(Fore.YELLOW+'1. Paul')
+    print(Fore.YELLOW+'2. John')
+    print(Fore.YELLOW+'3. James')
+    print(Fore.YELLOW+'4. Declan')
+    print(Fore.YELLOW+'5. Mike')
+    print(Fore.YELLOW+'6. Ian')
+    print(Fore.YELLOW+'7. Exit')
+    print(Fore.YELLOW+'\nPlease select an option by entering a number between 1 and 7')
 
-    choice = input('Enter your single digit choice here:\n')
+    choice = input(Fore.YELLOW+'Enter your single digit choice here:\n')
 
     if choice == '1':
          paul_contact()
@@ -414,9 +416,10 @@ def contact_client():
     elif choice == '6':
         ian_contact()
     elif choice == '7':
-        print('No need to make further contact now !')
+        print(Fore.RED+'No need to make further contact now.')
+        exit_app()
     else:
-        print('Invalid selection. Please enter a digit between 1 and 7\n')
+        print(Fore.RED+'Invalid selection. Please enter a digit between 1 and 7\n')
         
 
 """  
@@ -450,13 +453,23 @@ def exit_app():
     entire app must be rest so next user can use app 
     Lines that need to have rows removed...week_ends, weight_change, variance)
     """
-    exit= input("Would you like to exit the app? Please type 'y' or 'n'")
-    if exit != 'y':
-        get_weighin_data()
+    """  
+    Nested function-updates week_starts data to include this weeks week-end data so app will work on next run.
+    """
+    def update_week_starts_for_latest (data):
+        weighin_worksheet = SHEET.worksheet("week_starts")
+        weighin_worksheet.append_row(data)
+
+    exit= input(Fore.BLUE+"Would you like to exit the app? Please type 'y' to exit, 'c' to return to contacts or 'f' to return to feedback.")
+    if exit == 'y':
+        print(Fore.BLUE+"Goodbye personal trainer, have a great week training!")
+    elif exit == 'c':
+        contact_client()
+    elif exit == 'f':
+        list_feedback()
     else:
-        print("Goodbye personal trainer, have a great week training!")
-        user_login()
- 
+        print(Fore.BLUE+"Invalid selection, please type 'y', 'c' or 'f'")
+        
 """
 MAIN FUNCTION-Calls all functions
 """
@@ -482,8 +495,7 @@ def main():
     
 
 
-
-print("Welcome to 'My Weigh or the High Weigh', the app built to assist personal trainers to track their clients!")
+print(Fore.GREEN+"Welcome to 'My Weigh or the High Weigh', the app built to assist personal trainers to track their clients!")
 main()
 
 
