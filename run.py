@@ -32,7 +32,7 @@ def print_bodybuilder():
     extracted from https://www.asciiart.eu/sports-and-outdoors/other. Art by Joan Stark
     """
     print(''' 
-    Art by Joan Stark
+    
                  ,#####,
                  #_   _#
                  |a` `a|
@@ -81,9 +81,6 @@ def user_login():
     username_valid= (login[1])
     password_valid= (login[2])
 
-    print(f"Username expected: {username_valid}")
-    print(f"Password expected: {password_valid}")
-
     username_input = input('Enter your username here:\n')
     
     if username_input != ''.join(username_valid):
@@ -96,7 +93,7 @@ def user_login():
     if password_input != ''.join(password_valid):
         print("Invalid password, try again\n")
         return user_login()
-    print(f'Welcome back {username_valid}\n')
+    print('Welcome back personal_trainer.\n')
 """
 FUNCTION 2: Collect latest weigh-in data from user and includes error handling validation
 """
@@ -275,33 +272,39 @@ def list_feedback():
         paul_feedback = SHEET.worksheet("logged_feedback").get_all_values()
         paul_feedback_row = (paul_feedback[0])
         print(paul_feedback_row)
+        return list_feedback()
 
     def john():
         john_feedback = SHEET.worksheet("logged_feedback").get_all_values()
         john_feedback_row = (john_feedback[3])
         print(john_feedback_row)
+        return list_feedback()
 
     def james():
         james_feedback = SHEET.worksheet("logged_feedback").get_all_values()
         james_feedback_row = (james_feedback[6])
         print(james_feedback_row)
+        return list_feedback()
 
     def declan():
         declan_feedback = SHEET.worksheet("logged_feedback").get_all_values()
         declan_feedback_row = (declan_feedback[9])
         print(declan_feedback_row)
+        return list_feedback()
 
     def mike():
         mike_feedback = SHEET.worksheet("logged_feedback").get_all_values()
         mike_feedback_row = (mike_feedback[12])
         print(mike_feedback_row)
+        return list_feedback()
 
     def ian():
         ian_feedback = SHEET.worksheet("logged_feedback").get_all_values()
         ian_feedback_row = (ian_feedback[15])
         print(ian_feedback_row)
+        return list_feedback()
         
-    print("Please enter the number of the first client you would like to get a feedback comment from-maybe someone who did not meet expectation?\n")
+    print("Please enter the number of a client you would like to get a feedback comment from-maybe someone who did not meet expectation? Select exit to move on.\n")
     print('1. Paul')
     print('2. John')
     print('3. James')
@@ -326,10 +329,12 @@ def list_feedback():
     elif choice == '6':
         ian()
     elif choice == '7':
-        print('Goodbye !')
+        print('Okay-you are done with the comments !')
+        break
     else:
         print('Invalid selection. Please enter a digit between 1 and 7\n')
-        input('Press Enter to continue...\n')
+       
+    input('Would you like to see the contact information?\n')
 """
 FUNCTION 10: Contact client list
 """
@@ -348,33 +353,39 @@ def contact_client():
         paul_contact = SHEET.worksheet("contact").get_all_values()
         paul_contact_row = (paul_contact[1])
         print(paul_contact_row)
+        return contact_client()
 
     def john_contact():
         john_contact = SHEET.worksheet("contact").get_all_values()
         john_contact_row = (john_contact[2])
         print(john_contact_row)
+        return contact_client()
 
     def james_contact():
         james_contact = SHEET.worksheet("contact").get_all_values()
         james_contact_row = (james_contact[3])
         print(james_contact_row)
+        return contact_client()
 
     def declan_contact():
         declan_contact = SHEET.worksheet("contact").get_all_values()
         declan_contact_row = (declan_contact[4])
         print(declan_contact_row)
+        return contact_client
 
     def mike_contact():
         mike_contact = SHEET.worksheet("contact").get_all_values()
         mike_contact_row = (mike_contact[5])
         print(mike_contact_row)
+        return contact_client()
 
     def ian_contact():
         ian_contact = SHEET.worksheet("contact").get_all_values()
         ian_contact_row = (ian_contact[6])
         print(ian_contact_row)
+        return contact_client()
         
-    print("Please enter the number of the first client you would like to get contact details for?\n")
+    print("Please enter the number of the a client you would like to get contact details for?\n")
     print('1. Paul')
     print('2. John')
     print('3. James')
