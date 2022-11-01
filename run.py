@@ -333,11 +333,12 @@ def list_feedback():
     else:
         print('Invalid selection. Please enter a digit between 1 and 7\n')
        
-   contact = input('Would you like to see the contact information? Please type y or n.\n')
-    if contact != y:
+    contact = input('Would you like to see the contact information? Please type y to access contacts or n to exit.\n')
+    if contact != 'y':
         user(login)
     else: 
         print("Here is the contact info.")
+        continue
 """
 FUNCTION 10: Contact client list
 """
@@ -413,10 +414,10 @@ def contact_client():
     elif choice == '6':
         ian_contact()
     elif choice == '7':
-        print('Goodbye !')
+        print('No need to make further contact now !')
     else:
         print('Invalid selection. Please enter a digit between 1 and 7\n')
-        input('Press Enter to continue...\n')
+        
 
 """  
 FUNCTION 11: Range function.
