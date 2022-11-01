@@ -336,10 +336,11 @@ def list_feedback():
        
     contact = input(Fore.YELLOW+'Would you like to see the contact information? Please type y to access contacts or n to exit.\n')
    
-    if contact != 'y':
-        exit_app()
-    else: 
+    if contact == 'y':
         print(Fore.YELLOW+"Here is the contact info.")
+        contact_client()
+    else: 
+        exit_app()
 
 """
 FUNCTION 10: Contact client list
@@ -456,9 +457,10 @@ def exit_app():
     """  
     Nested function-updates week_starts data to include this weeks week-end data so app will work on next run.
     """
-    def update_week_starts_for_latest (data):
-        weighin_worksheet = SHEET.worksheet("week_starts")
-        weighin_worksheet.append_row(data)
+    #start_data=SHEET.worksheet("week_ends").row_values(-1)
+    #def update_week_starts_for_latest (start_data):
+        #weekstart_worksheet = SHEET.worksheet("week_starts")
+        #weekstart_worksheet.append_row(start_data)
 
     exit= input(Fore.BLUE+"Would you like to exit the app? Please type 'y' to exit, 'c' to return to contacts or 'f' to return to feedback.")
     if exit == 'y':
