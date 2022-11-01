@@ -330,11 +330,14 @@ def list_feedback():
         ian()
     elif choice == '7':
         print('Okay-you are done with the comments !')
-        break
     else:
         print('Invalid selection. Please enter a digit between 1 and 7\n')
        
-    input('Would you like to see the contact information?\n')
+   contact = input('Would you like to see the contact information? Please type y or n.\n')
+    if contact != y:
+        user(login)
+    else: 
+        print("Here is the contact info.")
 """
 FUNCTION 10: Contact client list
 """
@@ -385,7 +388,7 @@ def contact_client():
         print(ian_contact_row)
         return contact_client()
         
-    print("Please enter the number of the a client you would like to get contact details for?\n")
+    print("Please enter the number for the client you would like to get contact details for?\n")
     print('1. Paul')
     print('2. John')
     print('3. James')
@@ -446,8 +449,13 @@ def exit_app():
     entire app must be rest so next user can use app 
     Lines that need to have rows removed...week_ends, weight_change, variance)
     """
+    exit= input("Would you like to exit the app? Please type 'y' or 'n'")
+    if exit != 'y':
+        get_weighin_data()
+    else:
+        print("Goodbye personal trainer, have a great week training!")
+        user_login()
  
-
 """
 MAIN FUNCTION-Calls all functions
 """
