@@ -75,7 +75,7 @@ FUNCTION 1: Log in to access database, using login and password from google shee
 def user_login():
     """
     Get username and password from the user, validate from data saved on google sheets
-    could use try: except and permissionerror
+    , using recursion
     """
     login= SHEET.worksheet("login_info").get_all_values()
     username_valid= (login[1])
@@ -103,8 +103,8 @@ def get_weighin_data():
     Get the latest weigh-in values input for each of the six clients from the user. Must be kg (in numerical format and a float). Must have six values
     """
     while True:
-        print ("Please enter the latest weigh-in data for your six clients (in kg)")
-        print ("Must be to two decimal places, separated by commas, for each of your respective clients: Paul, John, James, Declan, Mike, Ian. ")
+        print ("Please enter the latest weigh-in data for your six clients (in kg).\n")
+        print ("Must be to two decimal places, separated by commas, for each of your respective clients: Paul, John, James, Declan, Mike, Ian.\n")
         print ("Last weigh-in: 82.70,87.45,97.32,103.9,83.45,76.55\n")
 
         latest_str = input("Enter latest weigh-in data here:\n")
@@ -141,8 +141,7 @@ FUNCTION 3: Move weigh-in data to the google sheets.
 """
 def update_weighin_worksheet(data):
     """ 
-    Update week-ends weigh-in worksheet, add new row with the values input by the user. These values should
-    also be added to the week_starts tab at the end of the run of an app so that the app rolls on each run
+    Update week-ends weigh-in worksheet, add new row with the values input by the user. 
     """
     print ("Updating end-of-week weigh-in info for week 9...\n")
     weighin_worksheet = SHEET.worksheet("week_ends")
@@ -154,15 +153,14 @@ FUNCTION 4: Calculate change in weight for latest week
 """
 def calculate_weight_change(week_ends_row):
     """  
-    Compare week_ends weighin data with week_starts weighin data and calculate the change for each client.
-    The change in weight will be calculated and added to the insights tab as the week 9 row.   
-    the change in weight is defined as the week_starts weighin figure subtracted from the week_ends weighin figure:
-    - Positive change in weight indicates weight gain
-    - Negative change in weight indicates weight loss
-    Need to review how to get new_weight_change_data to two decimal points
+    Compare week_ends weighin data with week_starts weighin data and calculate the change in weight for each client.
+    The change in weight will be calculated and added to the weight_change tab, as the week 9 row.   
+    The change in weight is defined as the week_starts weighin figure subtracted from the week_ends weighin figure:
+    - Positive number for change in weight indicates weight gain
+    - Negative number for change in weight indicates weight loss
     """
 
-    print("Calculating week 9 change in weight for Paul, John, James, Declan, Mike and Ian...")
+    print("Calculating week 9 change in weight for Paul, John, James, Declan, Mike and Ian...\n")
     week_starts = SHEET.worksheet("week_starts").get_all_values()
     week_starts_row = (week_starts[-1])
     
@@ -202,7 +200,7 @@ def calculate_variance(weight_change_row):
     *Note-function must be run after weight_change function so that the weight_change_data is populated and available for the necessary calculation
     """
 
-    print("Calculating week 9 variance from expected weight loss for Paul, John, James, Declan, Mike and Ian...")
+    print("Calculating week 9 variance from expected weight loss for Paul, John, James, Declan, Mike and Ian...\n")
     expected_wc = SHEET.worksheet("expected_wc").get_all_values()
     expected_wc_row = (expected_wc[-1])
     
@@ -226,8 +224,8 @@ def update_variance_worksheet(variance_data):
     print ("Week 9 variance info updated successfully.\n")
     variance_print= SHEET.worksheet("variance").get_all_values()
     variance_printed= (variance_print[-1])
-    print (f"Calculated difference from expected weight loss for Paul, John, James, Declan, Mike and Ian respectively was is {variance_printed}")
-    pause = input("Press 'y' to continue.")
+    print (f"Calculated difference from expected weight loss for Paul, John, James, Declan, Mike and Ian respectively was is {variance_printed}.")
+    pause = input("Press 'y' to continue.\n")
     if pause != 'y':
         print("Continuing...\n")
         return update_variance_worksheet(variance_data)
