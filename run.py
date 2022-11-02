@@ -227,6 +227,10 @@ def update_variance_worksheet(variance_data):
     variance_print= SHEET.worksheet("variance").get_all_values()
     variance_printed= (variance_print[-1])
     print (f"Calculated difference from expected weight loss for Paul, John, James, Declan, Mike and Ian respectively was is {variance_printed}")
+    pause = input("Press 'y' to continue.")
+    if pause != 'y':
+        print("Continuing...\n")
+        return update_variance_worksheet(variance_data)
 
 """  
 FUNCTION 8: Divide variance into two lists: Clients who met expectation and clients that didn't
