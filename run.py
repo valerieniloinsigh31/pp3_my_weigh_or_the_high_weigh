@@ -224,6 +224,9 @@ def update_variance_worksheet(variance_data):
     variance_worksheet = SHEET.worksheet("variance")
     variance_worksheet.append_row(variance_data)
     print ("Week 9 variance info updated successfully.\n")
+    variance_print= SHEET.worksheet("variance").get_all_values()
+    variance_printed= (variance_print[-1])
+    print (f"Calculated difference from expected weight loss for Paul, John, James, Declan, Mike and Ian respectively was is {variance_printed}")
 
 """  
 FUNCTION 8: Divide variance into two lists: Clients who met expectation and clients that didn't
