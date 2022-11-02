@@ -243,7 +243,7 @@ def variance_split():
     Print only names, not values, use index or split (row 1 only)
     """
 
-    print("Dividing out client results into those that met their weight loss targets and those who did not...")
+    print("Dividing out client results into those that met their weight loss targets and those who did not...\n")
     green_list = SHEET.worksheet("variance_green").get_all_values()
     green_list_row = (green_list[0])
     print(Fore.GREEN + 'Firstly, here is a list of clients who met their expectation.')
@@ -262,14 +262,14 @@ def list_feedback():
     """
     Gives the user the option to print the week 9 stored client 
     feedback comments to the python terminal.
-    Lists clients who did not meet expectation that week as more inclined to want
-    to access their feedback.
+    Reprints list of clients wh did not meet their weight loss expectation first as user
+    will likely want to see the feedback from those clients.
     """
-    print("Well so there you have it, the culprits who did not stay on track are as follows:")
+    print("Well so there you have it, the culprits who did not stay on track are as follows:\n")
     red_list = SHEET.worksheet("variance_red").get_all_values()
     red_list_row = (red_list[0])
     print(red_list_row)
-    print("Have a look at some of the feedback provided by clients during the week.")
+    print("Have a look at some of the feedback provided by clients during the week.\n")
     
     """   
     Nested functions: One per client, Paul, John, James, Declan, Mike, Ian
@@ -318,7 +318,7 @@ def list_feedback():
     print(Fore.BLUE+'5. Mike')
     print(Fore.BLUE+'6. Ian')
     print(Fore.BLUE+'7. Exit')
-    print(Fore.BLUE+'\nPlease select an option by entering a number between 1 and 7')
+    print(Fore.BLUE+'\nPlease select an option by entering a number between 1 and 7.\n')
 
     choice = input(Fore.BLUE+'Enter your single digit choice here:\n')
 
@@ -335,14 +335,14 @@ def list_feedback():
     elif choice == '6':
         ian()
     elif choice == '7':
-        print(Fore.RED+'Okay-you are done with the comments !')
+        print(Fore.RED+'Okay-you are done with the comments for now!/n')
     else:
-        print(Fore.BLUE+'Invalid selection. Please enter a digit between 1 and 7\n')
+        print(Fore.BLUE+'Invalid selection. Please enter a digit between 1 and 7.\n')
        
     contact = input(Fore.YELLOW+'Would you like to see the contact information? Please type y to access contacts or n to exit.\n')
    
     if contact == 'y':
-        print(Fore.YELLOW+"Here is the contact info.")
+        print(Fore.YELLOW+"Here is the contact info.\n")
         contact_client()
     else: 
         exit_app()
@@ -405,7 +405,7 @@ def contact_client():
     print(Fore.YELLOW+'5. Mike')
     print(Fore.YELLOW+'6. Ian')
     print(Fore.YELLOW+'7. Exit')
-    print(Fore.YELLOW+'\nPlease select an option by entering a number between 1 and 7')
+    print(Fore.YELLOW+'\nPlease select an option by entering a number between 1 and 7.\n')
 
     choice = input(Fore.YELLOW+'Enter your single digit choice here:\n')
 
@@ -422,10 +422,10 @@ def contact_client():
     elif choice == '6':
         ian_contact()
     elif choice == '7':
-        print(Fore.RED+'No need to make further contact now.')
+        print(Fore.RED+'You have elected not to view further contact details for now.\n')
         exit_app()
     else:
-        print(Fore.RED+'Invalid selection. Please enter a digit between 1 and 7\n')
+        print(Fore.RED+'Invalid selection. Please enter a digit between 1 and 7.\n')
         
 
 """  
@@ -449,15 +449,12 @@ def weight_change_total_average():
     """
 
     """  
-    FUNCTION 13: Exit app (and reset week 9 to blank-to accommodate manual calcs
+    FUNCTION 13: Exit app 
     """
 
 def exit_app():
     """ 
-    Must be selected by user to exit app and prompts pop function to remove the appended rows so that
-    app functionality resets. This is because the variance split tabs are not automated so
-    entire app must be rest so next user can use app 
-    Lines that need to have rows removed...week_ends, weight_change, variance)
+    Must be selected by user to exit app.
     """
     """  
     Nested function-updates week_starts data to include this weeks week-end data so app will work on next run.
@@ -467,16 +464,16 @@ def exit_app():
         #weekstart_worksheet = SHEET.worksheet("week_starts")
         #weekstart_worksheet.append_row(start_data)
 
-    exit= input(Fore.BLUE+"Would you like to exit the app? Please type 'y' to exit, 'c' to return to contacts or 'f' to return to feedback.")
+    exit= input(Fore.BLUE+"Would you like to exit the app? Please type 'y' to exit, 'c' to return to contacts or 'f' to return to feedback.\n")
     if exit == 'y':
-        print(Fore.BLUE+"Goodbye personal trainer, have a great week training!")
+        print(Fore.BLUE+"Goodbye personal trainer, have a great week training!\n")
         user_login()
     elif exit == 'c':
         contact_client()
     elif exit == 'f':
         list_feedback()
     else:
-        print(Fore.BLUE+"Invalid selection, please type 'y', 'c' or 'f'")
+        print(Fore.BLUE+"Invalid selection, please type 'y', 'c' or 'f'...\n")
         
 """
 MAIN FUNCTION-Calls all functions
@@ -485,7 +482,7 @@ MAIN FUNCTION-Calls all functions
 def main():
     """ 
     Run all of the functions contained in the program-contains calls for 
-    all functions...login function to be inserted
+    all functions.
     """
     print_bodybuilder()
     user_login()
@@ -503,7 +500,7 @@ def main():
     
 
 
-print(Fore.GREEN+"Welcome to 'My Weigh or the High Weigh', the app built to assist personal trainers to track their clients!")
+print(Fore.GREEN+"Welcome to 'My Weigh or the High Weigh', the app built to assist personal trainers to track their clients!\n")
 main()
 
 
