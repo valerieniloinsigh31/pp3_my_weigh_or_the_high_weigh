@@ -7,7 +7,7 @@ from pprint import pprint
 import sys
 sys.path.append("/usr/local/lib/python3.8/dist-packages/")
 import colorama
-from colorama import Fore 
+from colorama import Fore, Back, Style 
 colorama.init(autoreset=True)
 
 
@@ -81,19 +81,19 @@ def user_login():
     username_valid= (login[1])
     password_valid= (login[2])
 
-    username_input = input('Enter your username here:\n')
+    username_input = input(Fore.GREEN+'Enter your username here:\n')
     
     if username_input != ''.join(username_valid):
-        print("Invalid username, try again.")
+        print(Fore.RED+"Invalid username, try again.")
         return user_login()
-    print('Hi personal_trainer, please enter your usual password."')
+    print(Fore.GREEN+'Hi personal_trainer, please enter your usual password."')
 
-    password_input = input('Enter your password here:\n')
+    password_input = input(Fore.GREEN+'Enter your password here:\n')
 
     if password_input != ''.join(password_valid):
-        print("Invalid password, try again\n")
+        print(Fore.RED+"Invalid password, try again\n")
         return user_login()
-    print('Welcome back personal_trainer.\n')
+    print(Fore.GREEN+'Welcome back personal_trainer.\n')
 """
 FUNCTION 2: Collect latest weigh-in data from user and includes error handling validation
 """
@@ -103,17 +103,17 @@ def get_weighin_data():
     Get the latest weigh-in values input for each of the six clients from the user. Must be kg (in numerical format and a float). Must have six values
     """
     while True:
-        print ("Please enter the latest weigh-in data for your six clients (in kg).\n")
-        print ("Must be to two decimal places, separated by commas, for each of your respective clients: Paul, John, James, Declan, Mike, Ian.\n")
-        print ("Last weigh-in: 82.70,87.45,97.32,103.9,83.45,76.55\n")
+        print (Fore.MAGENTA+"Please enter the latest weigh-in data for your six clients (in kg).\n")
+        print (Fore.MAGENTA+"Must be to two decimal places, separated by commas, for each of your respective clients: Paul, John, James, Declan, Mike, Ian.\n")
+        print (Fore.MAGENTA+"Last weigh-in: 82.70,87.45,97.32,103.9,83.45,76.55\n")
 
-        latest_str = input("Enter latest weigh-in data here:\n")
-        print(f"The latest weights provided for Paul, John, James, Declan, Mike and Ian were {latest_str}")
+        latest_str = input(Fore.BLUE+"Enter latest weigh-in data here:\n")
+        print(Fore.BLUE+f"The latest weights provided for Paul, John, James, Declan, Mike and Ian were {latest_str}")
 
         weighin_data = latest_str.split(",")
         
         if validate_data(weighin_data):
-            print("Weigh-in data provided!")
+            print(Fore.GREEN+"Weigh-in data provided!")
             break 
 
     return weighin_data 
@@ -129,10 +129,10 @@ def validate_data(values):
             [float(value) for value in values]
             if len(values) != 6:
                 raise ValueError (
-                    f"Need to provide a value for each of the six clients, {len(values)} provided"
+                    Fore.RED+f"Need to provide a value for each of the six clients, {len(values)} provided"
                 )
         except ValueError as e:
-            print(f"Invalid data: {e}, please submit again. ")
+            print(Fore.RED+f"Invalid data: {e}, please submit again. ")
             return False
 
         return True 
@@ -143,10 +143,10 @@ def update_weighin_worksheet(data):
     """ 
     Update week-ends weigh-in worksheet, add new row with the values input by the user. 
     """
-    print ("Updating end-of-week weigh-in info for week 9...\n")
+    print (Fore.BLUE+"Updating end-of-week weigh-in info for week 9...\n")
     weighin_worksheet = SHEET.worksheet("week_ends")
     weighin_worksheet.append_row(data)
-    print ("Week 9 end-of-week weigh-in info updated successfully.\n")
+    print (Fore.GREEN+"Week 9 end-of-week weigh-in info updated successfully.\n")
 
 """  
 FUNCTION 4: Calculate change in weight for latest week
@@ -160,7 +160,7 @@ def calculate_weight_change(week_ends_row):
     - Negative number for change in weight indicates weight loss
     """
 
-    print("Calculating week 9 change in weight for Paul, John, James, Declan, Mike and Ian...\n")
+    print(Fore.BLUE+"Calculating week 9 change in weight for Paul, John, James, Declan, Mike and Ian...\n")
     week_starts = SHEET.worksheet("week_starts").get_all_values()
     week_starts_row = (week_starts[-1])
     
@@ -178,10 +178,10 @@ def update_weightchange_worksheet(weight_change_data):
     """ 
     Update weight change worksheet, add new row including the weight change values previously calculated in function 4.
     """
-    print ("Updating weight change info for week 9...\n")
+    print (Fore.BLUE+"Updating weight change info for week 9...\n")
     weightchange_worksheet = SHEET.worksheet("weight_change")
     weightchange_worksheet.append_row(weight_change_data)
-    print ("Week 9 weight change info updated successfully.\n")
+    print (Fore.GREEN+"Week 9 weight change info updated successfully.\n")
 
 """  
 FUNCTION 6: Calculate variance. Variance being the difference 
@@ -200,7 +200,7 @@ def calculate_variance(weight_change_row):
     *Note-function must be run after weight_change function so that the weight_change_data is populated and available for the necessary calculation
     """
 
-    print("Calculating week 9 variance from expected weight loss for Paul, John, James, Declan, Mike and Ian...\n")
+    print(Fore.BLUE+"Calculating week 9 variance from expected weight loss for Paul, John, James, Declan, Mike and Ian...\n")
     expected_wc = SHEET.worksheet("expected_wc").get_all_values()
     expected_wc_row = (expected_wc[-1])
     
@@ -218,16 +218,16 @@ def update_variance_worksheet(variance_data):
     """ 
     Update variance worksheet, add new row including the variance values previously calculated in function 6.
     """
-    print ("Updating variance info for week 9...\n")
+    print (Fore.BLUE+"Updating variance info for week 9...\n")
     variance_worksheet = SHEET.worksheet("variance")
     variance_worksheet.append_row(variance_data)
-    print ("Week 9 variance info updated successfully.\n")
+    print (Fore.GREEN+"Week 9 variance info updated successfully.\n")
     variance_print= SHEET.worksheet("variance").get_all_values()
     variance_printed= (variance_print[-1])
-    print (f"Calculated difference from expected weight loss for Paul, John, James, Declan, Mike and Ian respectively was is {variance_printed}.")
-    pause = input("Press 'y' to continue.\n")
+    print (Fore.GREEN+Back.RED+f"Calculated difference from expected weight loss for Paul, John, James, Declan, Mike and Ian respectively was is {variance_printed}.")
+    pause = input(Fore.GREEN+"Press 'y' to continue.\n")
     if pause != 'y':
-        print("Continuing...\n")
+        print(Fore.GREEN+"Continuing...\n")
         return update_variance_worksheet(variance_data)
 
 """  
@@ -243,7 +243,7 @@ def variance_split():
     Print only names, not values, use index or split (row 1 only)
     """
 
-    print("Dividing out client results into those that met their weight loss targets and those who did not...\n")
+    print(Fore.CYAN+"Dividing out client results into those that met their weight loss targets and those who did not...\n")
     green_list = SHEET.worksheet("variance_green").get_all_values()
     green_list_row = (green_list[0])
     print(Fore.GREEN + 'Firstly, here is a list of clients who met their expectation.')
@@ -265,11 +265,11 @@ def list_feedback():
     Reprints list of clients wh did not meet their weight loss expectation first as user
     will likely want to see the feedback from those clients.
     """
-    print("Well so there you have it, the culprits who did not stay on track are as follows:\n")
+    print(Fore.RED+"Well so there you have it, the culprits who did not stay on track are as follows:\n")
     red_list = SHEET.worksheet("variance_red").get_all_values()
     red_list_row = (red_list[0])
     print(red_list_row)
-    print("Have a look at some of the feedback provided by clients during the week.\n")
+    print(Fore.BLUE+"Would you like to take a look at some of the feedback provided by clients during the week?\n")
     
     """   
     Nested functions: One per client, Paul, John, James, Declan, Mike, Ian
@@ -335,9 +335,9 @@ def list_feedback():
     elif choice == '6':
         ian()
     elif choice == '7':
-        print(Fore.RED+'Okay-you are done with the comments for now!/n')
+        print(Fore.MAGENTA+'Okay-you are done with the comments for now!')
     else:
-        print(Fore.BLUE+'Invalid selection. Please enter a digit between 1 and 7.\n')
+        print(Fore.RED+'Invalid selection. Please enter a digit between 1 and 7.\n')
        
     contact = input(Fore.YELLOW+'Would you like to see the contact information? Please type y to access contacts or n to exit.\n')
    
@@ -422,7 +422,7 @@ def contact_client():
     elif choice == '6':
         ian_contact()
     elif choice == '7':
-        print(Fore.RED+'You have elected not to view further contact details for now.\n')
+        print(Fore.BLUE+'You have elected not to view further contact details for now.\n')
         exit_app()
     else:
         print(Fore.RED+'Invalid selection. Please enter a digit between 1 and 7.\n')
