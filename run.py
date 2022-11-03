@@ -81,14 +81,14 @@ def user_login():
     username_valid= (login[1])
     password_valid= (login[2])
 
-    username_input = input(Fore.GREEN+'Enter your username here:\n')
+    username_input = input('Enter your username here:\n')
     
     if username_input != ''.join(username_valid):
         print(Fore.RED+"Invalid username, try again.")
         return user_login()
     print(Fore.GREEN+'Hi personal_trainer, please enter your usual password."')
 
-    password_input = input(Fore.GREEN+'Enter your password here:\n')
+    password_input = input('Enter your password here:\n')
 
     if password_input != ''.join(password_valid):
         print(Fore.RED+"Invalid password, try again\n")
@@ -248,6 +248,9 @@ def variance_split():
     green_list_row = (green_list[0])
     print(Fore.GREEN + 'Firstly, here is a list of clients who met their expectation.')
     print(green_list_row)
+    pause = input(Fore.GREEN+"Press 'y' to continue.\n")
+    if pause != 'y':
+        return variance_split
 
     red_list = SHEET.worksheet("variance_red").get_all_values()
     red_list_row = (red_list[0])
@@ -258,8 +261,9 @@ def variance_split():
     red_list = SHEET.worksheet("variance_red").get_all_values()
     red_list_row = (red_list[0])
     print(red_list_row)
-    print(Fore.BLUE+"Would you like to take a look at some of the feedback provided by clients during the week?\n")
-
+    feedbackcontinue = input(Fore.BLUE+"Would you like to take a look at some of the feedback provided by clients during the week? Type 'y' if so.\n")
+    if feedbackcontinue != 'y':
+        return variance_split()
 """  
 FUNCTION 9: Gives user option to print client feedback from that week
 """
