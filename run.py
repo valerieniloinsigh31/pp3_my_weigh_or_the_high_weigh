@@ -224,7 +224,7 @@ def update_variance_worksheet(variance_data):
     print (Fore.GREEN+"Week 9 variance info updated successfully.\n")
     variance_print= SHEET.worksheet("variance").get_all_values()
     variance_printed= (variance_print[-1])
-    print (Fore.GREEN+Back.RED+f"Calculated difference from expected weight loss for Paul, John, James, Declan, Mike and Ian respectively was is {variance_printed}.")
+    print (Fore.GREEN+Back.RED+f"Calculated difference from expected weight loss for Paul, John, James, Declan, Mike and Ian respectively is {variance_printed}.")
     pause = input(Fore.GREEN+"Press 'y' to continue.\n")
     if pause != 'y':
         print(Fore.GREEN+"Continuing...\n")
@@ -254,6 +254,11 @@ def variance_split():
     print(Fore.RED + 'Now, here is a list of clients who did not meet their expectation.')
     print(red_list_row)
 
+    print(Fore.RED+"Well so there you have it, the culprits who did not stay on track are as follows:\n")
+    red_list = SHEET.worksheet("variance_red").get_all_values()
+    red_list_row = (red_list[0])
+    print(red_list_row)
+    print(Fore.BLUE+"Would you like to take a look at some of the feedback provided by clients during the week?\n")
 
 """  
 FUNCTION 9: Gives user option to print client feedback from that week
@@ -265,11 +270,6 @@ def list_feedback():
     Reprints list of clients wh did not meet their weight loss expectation first as user
     will likely want to see the feedback from those clients.
     """
-    print(Fore.RED+"Well so there you have it, the culprits who did not stay on track are as follows:\n")
-    red_list = SHEET.worksheet("variance_red").get_all_values()
-    red_list_row = (red_list[0])
-    print(red_list_row)
-    print(Fore.BLUE+"Would you like to take a look at some of the feedback provided by clients during the week?\n")
     
     """   
     Nested functions: One per client, Paul, John, James, Declan, Mike, Ian
