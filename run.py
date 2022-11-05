@@ -461,13 +461,8 @@ def exit_app():
     Must be selected by user to exit app.
     """
     """  
-    Nested function-updates week_starts data to include this weeks week-end data so app will work on next run.
+    Nested functions
     """
-    #start_data=SHEET.worksheet("week_ends").row_values(-1)
-    #def update_week_starts_for_latest (start_data):
-        #weekstart_worksheet = SHEET.worksheet("week_starts")
-        #weekstart_worksheet.append_row(start_data)
-
     exit= input(Fore.BLUE+"Would you like to exit the app? Please type 'y' to exit, 'c' to return to contacts or 'f' to return to feedback.\n")
     if exit == 'y':
         print(Fore.BLUE+"Goodbye personal trainer, have a great week training!\n")

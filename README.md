@@ -20,10 +20,10 @@ User Stories:
 
 
 <b>Design Choices:</b>
-As this is a back-end app, with minimal levels of design, the functional design was the key focus, such as the cover image, the clarity of the language used, the order of the functions and the green versus red font coloring of the clients who had met their weight loss expectations versus those who had not met their weight loss expectation.
+As this is a back-end app, with minimal levels of design, the functional design was the key focus, such as the cover image, the clarity of the language used, the order of the functions and the use of colorama to distinguish sections of font. For example green versus red font coloring font coloring of the clients who had met their weight loss expectations versus those who had not met their weight loss expectation.
 Color scheme: Imported the colorama module and added to requirements.txt so that the 
-two variance lists could be coloured separately (green/red)
-Typography: The typography should be clear and consistent. It should enable the data to be presented in a way that is clear, not over crowded, confusing or muddled. This was ensured with spacing, language and use of '\n'.
+two variance lists could be coloured separately (green/red) and different functions coloured accordingly to signify different sections
+Typography: I aimed for the typography to be clear and consistent. It should enable the data to be presented in a way that is clear, not over crowded, confusing or muddled. This was ensured with spacing, language, color, 'press x to continue' inputd and use of '\n'.
 
 <b>Planning</b>
 <p>I used Lucidchart Flowchart to assist in planning out the intent and functions of the app. Please see the extracts below:</p>
@@ -32,12 +32,21 @@ Typography: The typography should be clear and consistent. It should enable the 
 
 Please see excerpts below:
 
+![alt text](.//images/lucidcharts_plan.png);
+![alt text](.//images/lucidcharts_overall_flow.png);
+![alt text](.//images/lucid_functions_1.png);
+![alt text](.//images/lucid_functions_2.png);
+
+
+
 I started with extremely detailed notes and planning descriptions and refined this as I went.
 The visual aspect of the lucid chart images greatly assisted me in formulating the logic needed in 
 designing each of my functions.
 
-Goals:
-Order of the functions:
+<b>Goals</b>
+I always had in mind what I wanted the user to achiever with the app. I wanted the app to perform a number of functions that would be useful for a personal trainer in order to keep track of their clients.
+<b>Order of the functions:</b>
+The order of the functions is extremely important in this app as one relies on the previous. The omission or failure of one function would have a negative impact on other functions throughout the app, so I was particularly careful in considering this. Additionally, one limitation of the app in its current format is the variance_split function is not dynamic and as such requires manual editing after running the app to ensure that the app will run without issue for the following user.
 
 <b>Features</b>
 
@@ -52,8 +61,8 @@ Order of the functions:
 The user is given options to prompt a number of different functions that offer different insights into the progress of the candidates so far, such as:
 <li>-Calculate the change in weight for the latest week on a client-by-client basis.</li>
 <li>Calculate which clients met weight loss expectations and which didn't.</li>
+<li>Brings up client comments logged during the week in order to provide the personal trainer with insight.</li>
 <li>Bring up contact information for those that did not meet their weight loss expectation so that the personal trainer (user) can get more feedback.</li>
-<li>Calculate week with maximum and minimum weight loss and present as a range.</li>
 </ol>
 -Also, user can assess whether there were any emerging trends between candidates who used supplements and those who didn't.
 </ul>
@@ -62,15 +71,17 @@ The user is given options to prompt a number of different functions that offer d
 
 -Design that would be more pleasing for user:
 
-It is quite paired backed and minimal design, in future HTML/CSS and Javascript could be employed to make the website more pleasing and potentially easier to comprehend/user for the user.
+It is quite paired backed and minimal design, in future HTML/CSS and Javascript could be employed to make the website more pleasing and potentially easier to comprehend/use for the personal trainer.
 
 -Start to import visualizations of the data e.g. Pie charts and graphs. Could link up with Tableau etc to present visualisations comparing weekly data and making progress more comarable.
 
--Enable function where clients can input their own comments during the week outlining reasons for setbacks as opposed to the user having to input the feedback themselevs during the week. These can be prompted once a candidate is listed as not meeting expectation and the client comments will offer immediate feedback ( e.g. if they overate, didn't make it to the gym, had a wedding etc.). This will save the personal trainer from having to contact them after the fact
+-Enable functionality where clients can input their own comments during the week outlining reasons for setbacks as opposed to the user having to input the feedback themselevs during the week. These can be prompted once a candidate is listed as not meeting expectation and the client comments will offer immediate feedback ( e.g. if they overate, didn't make it to the gym, had a wedding etc.). This will save the personal trainer from having to contact them after the fact
 
--An additional feature to incorporate going forward will be connecting the app with automatic texting. The personal trainer (user) can trigger updates to be sent to the client the minute the week-end weigh in data is entered to alert them to their progress.
+-An additional feature to incorporate going forward will be connecting the app with automatic emails. The personal trainer (user) can trigger updates to be sent to the client the minute the week-end weigh in data is entered to alert them to their progress. Additionally, the email could outline an approach for the client to apply going forward, as well as attaching various relevant diet/training plans that would suit the client's situation. These plans could be saved to the database also and could address specific challenges (e.g. if client is travelling all week and can only perform body weight exercises or has limited capability to cook food)
 
--Various adjustments saved to the database and prompted based on progress. Nutritional adjustments and exercise programme adjustments that include tweaks that can be made that are specific to differen situations. These can be stored on the system, listed within a function and triggered based on the users analysis of weekly data and the requirements of the client. (e.g. if it is know that a client will be travelling all week and will not have access to a gym, there could be a separate alternative plan saved to the system (outlining food types to target e.g. getting plain, easily trackable foods at airports and different exercises to use e.g. outdoor running, bodyweight exercises etc.)) This will save the user a lot of time as he/she will not need to continuously redraw different programmes and can mail these dircetly to the client.
+-Various adjustments saved to the database and prompted based on progress. Nutritional adjustments and exercise programme adjustments that include tweaks that can be made that are specific to different situations. These can be stored on the system, listed within a function and triggered based on the users analysis of weekly data and the requirements of the client. (e.g. if it is know that a client will be travelling all week and will not have access to a gym, there could be a separate alternative plan saved to the system (outlining food types to target e.g. getting plain, easily trackable foods at airports and different exercises to use e.g. outdoor running, bodyweight exercises etc.)) This will save the user a lot of time as he/she will not need to continuously redraw different programmes and can mail these dircetly to the client.
+
+-Two other useful functions to add to the app in future would be a function that calculates the range of weight loss to date. This could be done using MAX and MIN formulae and an f print statement. The range function would assist with advertising the programme.  Another function to add would be a fuction that calculates the average weekly weight loss per client and the averaage total weight loss per client  from the date of inception of the prgramme to present. This could provide valuable insight to the personal trainer with regard to overall progress of the program and whether certain times promoted or hindered more or less weight loss (e.g. Christmas holidays might cause the average total weight loss to decrease)
 
 <b>Database Design</b>
 
@@ -79,7 +90,7 @@ It is quite paired backed and minimal design, in future HTML/CSS and Javascript 
 <b>Language Used:</b> Python 3.8.10
 
 <b>Frameworks, Libraries & Programs:</b> 
-Google Spreadsheets: used as the external data source for the client data-accessed per CI tutorial
+<p>Google Spreadsheets: used as the external data source for the client data-accessed per CI tutorial
 Google Drive API: used to generate credentials used in the project to securely access the Google Spreadsheet-accessed per CI tutorial
 Google Sheets API: used to support interactions (e.g. read/write functionality) between the code and data stored in the Google Spreadsheet-accessed per CI tutorial
 gspread: Python API for Google Sheets imported to project-incorporated per CI tutorial
@@ -87,12 +98,14 @@ Google Auth: Google authentication library for Python required to use the creden
 Lucidcharts (as mentioned on CI tutorial) used to create the flowcharts outlining the functionality of the project.
 Git: used for version control via the Gitpod terminal to commit to Git and Push to GitHub.
 GitHub: generates/contains the repository for the projects code after being pushed from Git.
-Heroku: used to deploy the application and provides an environment in which the code can execute. As per CI tutorial, installed using GITHUB Student Developer Pack authentication code provided by Student Care. Connected with GITHUB per CI tutorial. Initially for demonstrative purposes, manual deployment selected in order to track how this is done and then alerted to automatic deployment linked with Github.
+Heroku: used to deploy the application and provides an environment in which the code can execute. As per CI tutorial, installed using GITHUB Student Developer Pack authentication code provided by Student Care. Connected with GITHUB per CI tutorial. Initially for demonstrative purposes, manual deployment selected in order to track how this is done and then alerted to automatic deployment linked with Github.</p>
 
 <b>Testing:</b> 
-'pip3 install pycodestyle' was used for testing on the GITHUB terminal itself as there appeared to be an issue with the PEP8 validator
+<p>'pip3 install pycodestyle' was used for testing on the GITHUB terminal itself as there appeared to be an issue with the PEP8 validator</p>
 
-Installation performed per below comment extracted from Slack:
+<p>Installation performed per below comment extracted from Slack:</p>
+
+
 Gitpod->Python Select Linter->pycodestyle
 
 Linter:
@@ -103,35 +116,26 @@ Codestyle:
 <b>Further Testing</b>
 
 <b>Known Bugs</b>
-One limitation of the design is that there are a number of tabs with manual formulae included within 
-the Google Sheets document. The code is written in a certain order so that everything works and is populated in the correct order. But, the manual formulae will require update on each additional entry of the app. For example, there are two tabs, 'variance_green' and 'variance_red' that has manual formulas that splits the variance between expected weight loss and actual weight loss into the clients who met expectation and those that did not meet expectation. This formulae are linked to the newly appended row in the variance tab (e.g. row 10) so will not update on the next running of the app when another row is appended unless the formulae are manually updated (e.g. changed from row 10 to row 11). In future versions of the app, I could design a workaround of this to autmate this feature but for now, there is a printed reminded included at the end of the app, reminding the personal trainer 'Please update manual rows within google sheets before logging out.'
+<p>A limitation of the app design is that there are a number of tabs with manual formulae included within  the Google Sheets document that have rows that are not dynamic and thus require manual adjustment on each run of the app. The code is written in a certain order so that everything works and is populated in the correct order. But, the manual formulae will require update on each additional entry of the app. For example, there are two tabs, 'variance_green' and 'variance_red' that has manual formulas that splits the variance between expected weight loss and actual weight loss into the clients who met expectation and those that did not meet expectation. This formulae are linked to the newly appended row in the variance tab (e.g. row 10) so will not update on the next running of the app when another row is appended unless the formulae are manually updated (e.g. changed from row 10 to row 11). In future versions of the app, I plan on making the formulae dynamic, using the COUNTA formula...</p>
 
 
 <b>Deployment</b> 
--This project was the first backend project (previous projects had been front end, HTML/CSS and Javascript)
--This project required activiation of the GITHUB Student Developer pack, as provided by the Code Institute, per the below:
 
--Per Slack, requested Github Student Developer Pack activation email and activated accordingly once received
--Activated Heroku and connect it to GITHUB profile per below:
+<p>This project was the first backend project (previous projects had been front end, HTML/CSS and Javascript)</p>
+<p>This project required activiation of the GITHUB Student Developer pack, as provided by the Code Institute, per the below:</p>
 
-I selected manual deployment for the Walkthrough ('Love Sandwiches project') but updated to automatic deployment for this project and, accordingly, it was automatically connected to Heroku for dpeloyment and the usual deployment process could be followed on GITHUB thereafter, per below:
+<p>Per Slack, requested Github Student Developer Pack activation email and activated accordingly once received</p>
+<p>Activated Heroku and connected it to GITHUB profile per below:</p>
 
-<h2><b>Clone the GitHub repository</b></h2>
-<b>Steps to create a local clone-per CI tutorial</b>
+<p>I selected manual deployment for the Walkthrough ('Love Sandwiches project') but updated to automatic deployment for this project and, accordingly, it was automatically connected to Heroku for dpeloyment and the usual deployment process could be followed on GITHUB thereafter, per below:</p>
+
+<h2><b>On the GitHub repository to workspaces and Heroku</b></h2>
+<b>Steps to pin repositary to workspaces followed per the CI tutorial</b>
 <ol>
-<li>Go to the https://github.com/elainebroche-dev/ms3-event-scheduler repository on GitHub</li>
+<li>Set up repositary using the python template provided by the CI</p>
+<li>Once gitignore fiel udpated to include the cred.json file extracted from google sheets linking, pinned to github workspaces so could open repositary within selecting gitpod on each occassion (which would reset the gitignore)
 
-<li>Click the "Code" button to the right of the screen, click HTTPs and copy the link there</li>
 
-<li>Open a GitBash terminal and navigate to the directory where you want to locate the clone</li>
-
-<li>On the command line, type "git clone" then paste in the copied url and press the Enter key to begin the clone process</li>
-
-<li>Changes made to the local clone can be pushed back to the repository using the following commands:
-
-git add filenames (or "." to add all changed files)
-git commit -m "text message describing changes"
-git push
 
 N.B. Any changes pushed to the master branch will take effect on the live project because automatic deployments are enabled in Heroku for this project.
 
@@ -139,39 +143,36 @@ N.B. Any data changes made through the use of the application will take effect i
 </ol>
 
 <h2><b>How to create and configure the Google spreadsheet and APIs</b></h2>
-<b>Steps to setup and configure access to data</b>
+<b>Steps to setup and configure access to data<-completed as per CI tutorial</b>
 <ol>
 <b>Create the Google Spreadsheet</b>
 <ol>
-<li>Log in to your Google account</li>
-<li>Create a Google Spreadsheet called 'my_weigh_or_the_high_weigh' on the Google Drive with several tabs:''.</li>
+<li>Log in to your Google account-went to gmail and opened google sheets</li>
+<li>Create a Google Spreadsheet called 'my_weigh_or_the_high_weigh' on the Google Drive with several tabs:'login_info, weight change etc'.</li>
 
-Set up APIs using the Google Cloud Platform
+Following the instruction provided by the CI in the walkthrough 'Love Sandwiches' project, I set up APIs using the Google Cloud Platform. 
 
-Access the Google Cloud Platform
-
-Create a new project and give it a unique name, then select the project to go to the project dashboard
 </ol>
 
 <b>Setup Google Drive credentials</b>
 
 <li>Completed as per CI tutorial</li>
 
-<li>Click on the hamburger menu in the top left of the screen to access the navigation menu</li>
+<li>Clicked on the hamburger menu in the top left of the screen to access the navigation menu</li>
 
 <li>On the left hand menu select 'APIs and Services' and then 'Library'</li>
 
-<li>>Search for Google Drive API</li>
+<li>>Searched for Google Drive API</li>
 
-<li>Select Google Drive API and click on 'enable' to get to the API and Services Overview page</li>
+<li>Selected Google Drive API and click on 'enable' to get to the API and Services Overview page</li>
 
-<li>Click on the Create Credentials button near the top left of the screen</li>
+<li>Clicked on the Create Credentials button near the top left of the screen</li>
 
-<li>Select 'Google Drive' API from the dropdown for 'Credential Type'</li>
+<li>Selected 'Google Drive' API from the dropdown for 'Credential Type'</li>
 
-<li>Select the 'Application Data' radio button in the 'What data will you be accessing' area</li>
+<li>Selected the 'Application Data' radio button in the 'What data will you be accessing' area</li>
 
-<li>Select the 'No, I'm not using them' for the 'Are you planning to use this API with Compute Engine, Kubernetes Engine, App Engine, or Cloud Functions?' area</li>
+<li>Selected the 'No, I'm not using them' for the 'Are you planning to use this API with Compute Engine, Kubernetes Engine, App Engine, or Cloud Functions?' area</li>
 
 <li>Cick Next</li>
 
@@ -189,13 +190,13 @@ Create a new project and give it a unique name, then select the project to go to
 
 <li>Click on the KEYS tab at the top middle of the screen.</li>
 
-<li>Click on the Add Key dropdown and select Create New Key.</li>
+<li>Clicked on the Add Key dropdown and select Create New Key.</li>
 
-<li>Select the JSON radio button then click Create. The json file with the new API credentials will download your machine.</li>
+<li>Selected the JSON radio button then click Create. The json file with the new API credentials will download your machine.</li>
 
-<li>Rename the downloaded file to creds.json. This filename is already listed in the project .gitignore file and so no further action will be needed to prevent it being accidentally uploaded to github. This was done on the 'Love Sandwiches' walkthrough project. Could name anything but ensure name is also included in .gitignore file.</li>
+<li>Renamed the downloaded file to creds.json. This filename is already listed in the project .gitignore file and so no further action will be needed to prevent it being accidentally uploaded to github. This was done on the 'Love Sandwiches' walkthrough project. Could name anything but ensure name is also included in .gitignore file.</li>
 
-<li>Copy the new creds.json file into the local clone</li>
+<li>Copied the new creds.json file into the local clone</li>
 
 <li>In the creds.json file, copy the value for "client email" (excluding inverted commas) and then  on the Google Drive, paste this exact address into the share with section. Share the spreadsheet created above with this email address, assigning a role of Editor similar to the image shown below:</li>
 
@@ -247,20 +248,19 @@ Share Spreadsheet Image:
 <li>The application can be run from the Application Configuration page by clicking on the Open App button.</li>
 </ol>
 
-<b>The live link for this project is (INSERT WHEN DEPLOYED)</b>
+<b>The live link for this project is https://pythonpp3.herokuapp.com/</b>
 
 <b>Credits:</b>
 Code Institute tutorials-particularly the 'Love Sandwiches' Walkthrough Project and Slack
 Ideas-'Love Sandwiches walkthrough project'
 Slack-Read queries and viewed different student repositories on Slack when researching for my project-a list of these influences included below
 Modules imported:
-RE-Email verification
 Colorama-coloring font
 Cover image: ASCII Art Archive: https://www.asciiart.eu/sports-and-outdoors/other
 
 Various student projects that I looked at included:
 Ramon Link:
-Raul dwyer-choose your story
+Paul dwyer-choose your story
 Kevin Sherries: Horoscope...importing lists informed my idea for bringing feedback in
 
 Reviewed the following projects which were listed in 'The Importance of MVP-PP3' document shared on Slack:
