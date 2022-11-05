@@ -158,7 +158,7 @@ I tested the app prior to deployment several times, using the following code on 
 I also tested the app several times once deployed on Heroku and updated based gitpod based on any issues noted.
 
 
-All functions worked accordingly (eg the login function worked with the correct inputs, the latest weigh-in information was accepted, the change in weight loss was calculated correctly, the variance from expectation was calculated correctly and split into two rows, the feedback and contact information printed accurately) but I noted the requirement for a manual reset/deletion of appended rows at the end of each run due to some of the functions/formulae being manual and not dynamic. This limitation is futher discussed in the bugs section.
+All functions worked accordingly (eg the login function worked with the correct inputs, the latest weigh-in information was accepted, the change in weight loss was calculated correctly, the variance from expectation was calculated correctly and split into two rows, the feedback and contact information printed accurately) but I noted the requirement for a manual reset/deletion of appended rows at the end of each run due to some of the functions/formulae being manual and not dynamic. This limitation is further discussed in the bugs section.
 
 <h2><b>Further Testing</b></h2>
 
@@ -184,7 +184,7 @@ conditional formatting in variance tab:
  ![alt text](.//images/expected_wc.png);
 
 
-<b>Deployment</b> 
+<h2><b>Deployment</b></h2>
 
 <p>This project was the first backend project (previous projects had been front end, HTML/CSS and Javascript)</p>
 
@@ -202,7 +202,7 @@ conditional formatting in variance tab:
 
 <p>Activated Heroku and connected it to GITHUB profile per below:</p>
 
-
+![alt text](.//images/heroku_deploymentmethod.png);
 
 <p>I selected manual deployment for the Walkthrough ('Love Sandwiches project') but updated to automatic deployment for this project and, accordingly, it was automatically connected to Heroku for deployment and the usual deployment process could be followed on GITHUB thereafter, per below:</p>
 
