@@ -319,9 +319,19 @@ Please see a screengrab of the Heroku deployment tab below, with Github having b
 <li>For deployment, two options are given on Heroku, either 'Automatically Deploy' each time changes are pushed to GitHub, or 'Manually deploy'. I selected automatical deployment for the project. (but did intially select manual deployment when setting up Heroku for 'Love Sandwiches' walkthrough)</li>
 
 <li> The usual deployment process was followed on Github once it was connected to Heroku.
-settings-Git pages-Main branch
+1. Go to repositary on Github.
+2.Click on settings
+3.Click on Github pages
+4.In Github pages, in 'Build and Deployment' section, update branch to 'Main branch'.
+5. Live project link should load after a minute.
 
-Screengrab of seployed repositary:
+Github deployment screengrabs:
+Repositary:
+![alt text](.//images/github_repositary.png);
+Githubs pages:
+![alt text](.//images/github_deploy_settings.png);
+Live link:
+![alt text](.//images/github_deploy_liveproject.png):
 
 <li>The application can be run from the Application Configuration page by clicking on the Open App button. Please see screengrab below:
 
@@ -339,10 +349,10 @@ Open App on Heroku: ![alt text](.//images/heroku_openapp.png);
 
 Hotel Bookings (useful as also data-centric):https://github.com/JoGorska/hotel-booking/blob/main/run.py
 Event Scheduler (useful as also data-centric): https://github.com/elainebroche-dev/ms3-event-scheduler
-The README for this project also influenced the format of my README.
-I also drew inspiration from the format of the README from the Event Scheduler repositary
+<p>The README for this project also influenced the format of my README.
+I also drew inspiration from the format of the README from the Event Scheduler repositary.</p>
 </li>
-<li>Slack-Read queries and viewed different student repositories on Slack when researching for my project</li>
+<li>Slack-Read queries and viewed different student repositories on Slack when researching for my project. I found the peer code review page particularly useful.</li>
 <li>Colorama module-imported colorama module to enable me to color the font to make the presentation more distinct and readable. I watched the following video on installing colorama: https://www.google.com/search?q=import+colorama+python&oq=Import+colorama+python&aqs=chrome.0.0i512j0i22i30j0i390l3.6454j0j7&sourceid=chrome&ie=UTF-8#kpvalbx=__K1eY9aBHcKYhbIP2vaq2AY_35</li>
 <li>Cover image: ASCII Art Archive: https://www.asciiart.eu/sports-and-outdoors/other. Noted that a number of other projects added images from ASCII and I liked the aesthetic. I found a suitable image for my project and added this.</li>
 <li>Per the assessor feedback on project 2, I tried to ensure my git commits were adequate, using the imperative format as outlined in the following: https://cbea.ms/git-commit/</li>
@@ -351,9 +361,9 @@ I also drew inspiration from the format of the README from the Event Scheduler r
 
 <b>Various student projects that I looked at included:</b>
 <ol>
-<li>Ramon Link:</li>
-<li>Paul Dwyer-choose your story</li>
-<li>Kevin Sherries: Horoscope...Another Data-Centric Project</li>
+<li>Laura Walsh-Adoption form app: https://github.com/lauralola/adoption_form_response</li>
+<li>Paul Dwyer-Choose your own adventure app: https://github.com/Pauldwyer/Choose-your-adventure</li>
+<li>Kevin McSherry-Horoscope apP: https://github.com/kevinmcsherry/Horoscope_P3</li>
 </ol>
 
 
